@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <title>English Exam Paper Template - Al-Bayariq Private Schools</title>
+  <title>English Exam Paper & Model Answer - Al-Bayariq Private Schools</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800;900&family=Alexandria:wght@400;600;700;800&display=swap');
 
@@ -26,7 +26,7 @@
       direction: ltr;
     }
 
-    /* الشريط العلوي */
+    /* الشريط العلوي العام */
     .top-toolbar {
       position: sticky;
       top: 0;
@@ -69,13 +69,19 @@
       transform: translateY(-1px);
     }
 
+    .btn-key {
+      background: #b91c1c !important;
+      color: #ffffff !important;
+      border: 1px solid #ef4444 !important;
+    }
+    .btn-key:hover {
+      background: #dc2626 !important;
+    }
+
     .btn-danger-clear {
       background: #dc2626 !important;
       color: #ffffff !important;
       border: 1px solid #b91c1c !important;
-    }
-    .btn-danger-clear:hover {
-      background: #991b1b !important;
     }
 
     .btn-print-main {
@@ -326,7 +332,7 @@
       flex-grow: 1;
     }
 
-    /* الأسئلة */
+    /* صناديق الأسئلة */
     .questions-wrapper {
       display: flex;
       flex-direction: column;
@@ -404,6 +410,15 @@
       flex-wrap: wrap;
     }
 
+    .expand-control-bar input[type="range"] {
+      flex: 1;
+      min-width: 60px;
+      accent-color: #c19a4b;
+      cursor: pointer;
+    }
+
+    .px-label { color: #facc15; font-weight: 800; min-width: 36px; }
+
     .btn-delete-q {
       background: #ef4444;
       color: #fff;
@@ -415,6 +430,21 @@
       font-weight: bold;
     }
 
+    .btn-mini-tool {
+      background: #0e5c4d;
+      color: #fff;
+      border: 1px solid #7ea698;
+      padding: 2px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .btn-mini-tool:hover { background: #147a66; }
+
     .q-body-content {
       border: 1px solid #e2e8f0;
       background: #fafcfb;
@@ -425,6 +455,70 @@
       outline: none;
       min-height: 60px;
       overflow: hidden;
+    }
+
+    /* حاوية الصورة المدمجة في السؤال */
+    .embedded-img-wrap {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+
+    .embedded-img-card {
+      border: 1.5px dashed #cbd5e1;
+      padding: 4px;
+      border-radius: 5px;
+      background: #ffffff;
+      text-align: center;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .embedded-img-card img {
+      max-height: 110px;
+      max-width: 160px;
+      object-fit: contain;
+      border-radius: 4px;
+      cursor: pointer;
+      border: 1px solid #94a3b8;
+    }
+
+    /* الفقرات الداخلية */
+    .sub-part-header {
+      font-weight: 800;
+      color: #0e5c4d;
+      margin-top: 6px;
+      margin-bottom: 3px;
+      background: #eef7f4;
+      padding: 2px 6px;
+      border-radius: 3px;
+      border-left: 3px solid #0e5c4d;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tf-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2px 0;
+    }
+
+    .tf-box {
+      font-weight: 800;
+      color: #475569;
+      min-width: 60px;
+      text-align: right;
+    }
+
+    .answer-line-box {
+      margin-top: 2px;
+      margin-bottom: 5px;
+      color: #334155;
     }
 
     /* سؤال الخط بالأسطر الأربعة */
@@ -466,7 +560,27 @@
       height: 0;
     }
 
-    /* أشرطة الرصد والدرجات */
+    /* أسلوب الإجابات النموذجية باللون الأحمر */
+    .ans-key {
+      color: #dc2626 !important;
+      font-weight: 800 !important;
+      display: none;
+    }
+
+    body.model-answer-active .ans-key {
+      display: inline !important;
+    }
+
+    body.model-answer-active .blank-dots {
+      display: none !important;
+    }
+
+    body.model-answer-active .rubric-strip td {
+      color: #dc2626 !important;
+      font-weight: 900 !important;
+    }
+
+    /* أشرطة الرصد والدرجات من اليسار تماماً */
     .rubric-strip {
       border-collapse: collapse;
       font-size: 10.5px;
@@ -487,7 +601,7 @@
     .rubric-strip th { background-color: #e2e8f0; font-weight: 800; color: #0f172a; }
     .rubric-strip td { font-weight: 800; color: #0e5c4d; min-width: 24px; }
 
-    /* التذييل */
+    /* التذييل وثبات الشارات */
     .footer-divider {
       height: 1.5px;
       background-color: #c19a4b;
@@ -516,13 +630,17 @@
     }
 
     .follow-badge {
-      background-color: #0e5c4d;
-      color: #ffffff;
+      background-color: #0e5c4d !important;
+      color: #ffffff !important;
       border: 1px solid #c19a4b;
-      padding: 1px 7px;
-      border-radius: 3px;
-      font-size: 9.5px;
+      padding: 2px 9px;
+      border-radius: 4px;
+      font-size: 10px;
       font-weight: 800;
+      display: inline-flex !important;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: 0.5px;
     }
   </style>
 </head>
@@ -531,9 +649,12 @@
   <!-- شريط التحكم العلوي -->
   <div class="top-toolbar no-print">
     <div class="toolbar-left">
+      <!-- زر الإجابة النموذجية -->
+      <button class="btn-action btn-key" id="modelAnswerBtn" onclick="toggleModelAnswer()">🔑 Model Answer</button>
+
       <button class="btn-action btn-danger-clear" onclick="clearAllTemplateData()" title="Clear all and reset">🧹 Clear All Data</button>
 
-      <!-- قائمة المناهج متضمنة Pioneer للمتوسطة -->
+      <!-- اختيار المنهج متضمناً Pioneer للمتوسط و Top Goal و Top Stars -->
       <select id="stageSelect" class="select-tool" onchange="changeStage(this.value)">
         <optgroup label="Primary Stage (المرحلة الابتدائية)">
           <option value="top_goal" selected>🌟 Top Goal (Primary)</option>
@@ -553,9 +674,11 @@
         <option value="page1_wrapper">Page 1</option>
       </select>
 
+      <!-- قائمة المهارات مع خيار سؤال الصور الصريح -->
       <select id="questionTypeSelect" class="select-tool">
-        <option value="handwriting">✍️ E) Handwriting (4-Lines / Copying)</option>
         <option value="reading_split">📖 Reading Comprehension (Passage + Parts)</option>
+        <option value="image_q">🖼️ Image / Picture Question</option>
+        <option value="handwriting">✍️ E) Handwriting (4-Lines / Copying)</option>
         <option value="vocab">🔤 Vocabulary (Word Box)</option>
         <option value="grammar">⚙️ Grammar (MCQ)</option>
         <option value="spelling">🔠 Spelling / Missing Letters</option>
@@ -634,7 +757,7 @@
                     <td contenteditable="true">&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;/ 1448 H</td>
                     <td id="courseNameCell" contenteditable="true">English (Top Goal)</td>
                     <td id="classNameCell" contenteditable="true">Grade &nbsp;&nbsp;&nbsp; / </td>
-                    <td contenteditable="true"></td>
+                    <td contenteditable="true" id="studentNameCell"></td>
                   </tr>
                 </table>
                 <div class="total-marks-card">
@@ -644,7 +767,6 @@
               </div>
             </div>
 
-            <!-- حاوية الأسئلة مفرغة تماماً -->
             <div id="page1_wrapper" class="questions-wrapper">
             </div>
           </div>
@@ -655,7 +777,7 @@
             <div class="footer-row">
               <div class="footer-vision">✨ With my best wishes ✨</div>
               <div style="display:flex; align-items:center; gap:8px;">
-                <span class="page-follow-tag" style="font-size: 11px; color: #0e5c4d; font-weight: 800;" contenteditable="true">انتهت الأسئلة</span>
+                <span class="footer-badge-text follow-badge" id="p1_follow_tag">انتهت الأسئلة</span>
                 <div class="page-num page-num-tag" style="border: none;">Page 1 of 1</div>
               </div>
             </div>
@@ -669,16 +791,151 @@
 
   <script>
     let qCounter = 0;
+    let imgCounter = 0;
+    let isModelAnswer = false;
+
+    // إضافة فقرات فرعية (Wh- / MCQ / T/F)
+    function appendSubPart(areaId, type) {
+      const area = document.getElementById(areaId);
+      if (!area) return;
+
+      if (type === 'wh') {
+        const part = document.createElement('div');
+        part.innerHTML = `
+          <div class="sub-part-header">
+            <span>Answer the following question(s) from the text:</span>
+            <span style="font-size:11px; font-weight:normal;">(Marks)</span>
+          </div>
+          1. Write question sentence here ....................?<br>
+          <div class="answer-line-box">
+            Ans: <span class="blank-dots">................................................................................................................................................</span>
+            <span class="ans-key">Model answer text goes here...</span>
+          </div>
+        `;
+        area.appendChild(part);
+      } else if (type === 'mcq') {
+        const part = document.createElement('div');
+        part.innerHTML = `
+          <div class="sub-part-header">
+            <span>Choose the correct answer:</span>
+            <span style="font-size:11px; font-weight:normal;">(Marks)</span>
+          </div>
+          1. Question prompt goes here .................... <span class="ans-key">[ ➔ Option 1 ]</span><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;[ <strong>A.</strong> Option 1 &nbsp;&nbsp;&nbsp;&nbsp; <strong>B.</strong> Option 2 &nbsp;&nbsp;&nbsp;&nbsp; <strong>C.</strong> Option 3 ]<br>
+        `;
+        area.appendChild(part);
+      } else if (type === 'tf') {
+        const part = document.createElement('div');
+        part.innerHTML = `
+          <div class="sub-part-header">
+            <span>Put (✔) for True or (✖) for False:</span>
+            <span style="font-size:11px; font-weight:normal;">(Marks)</span>
+          </div>
+          <div class="tf-row">
+            <span>1. Sentence statement goes here...</span>
+            <span class="tf-box">( <span class="blank-dots">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="ans-key">✔</span> )</span>
+          </div>
+        `;
+        area.appendChild(part);
+      }
+    }
+
+    // زر إضافة صورة داخل أي سؤال موجود
+    function appendImageToQuestion(areaId) {
+      imgCounter++;
+      const area = document.getElementById(areaId);
+      if (!area) return;
+
+      const fileInputId = `file_q_img_${imgCounter}`;
+      const previewImgId = `preview_q_img_${imgCounter}`;
+
+      const card = document.createElement('div');
+      card.className = 'embedded-img-wrap';
+      card.innerHTML = `
+        <div class="embedded-img-card">
+          <img id="${previewImgId}" src="https://via.placeholder.com/140x100?text=Click+to+Upload" title="Click to upload image" onclick="document.getElementById('${fileInputId}').click();">
+          <input type="file" id="${fileInputId}" accept="image/*" style="display:none;" onchange="loadQuestionImg(this, '${previewImgId}')">
+          <div style="font-size:10.5px; color:#64748b;" class="no-print">Click image to change</div>
+          <button class="btn-delete-q no-print" onclick="this.closest('.embedded-img-wrap').remove()">✕ Remove Image</button>
+        </div>
+        <div style="flex:1;" contenteditable="true">
+          Write questions or descriptions related to this picture here...
+        </div>
+      `;
+
+      area.prepend(card);
+    }
+
+    // رفع وتحميل الصورة وتثبيتها كـ Base64
+    function loadQuestionImg(input, targetImgId) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const imgElem = document.getElementById(targetImgId);
+          if (imgElem) {
+            imgElem.src = e.target.result;
+          }
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    // تفعيل وإلغاء وضع الإجابة النموذجية
+    function toggleModelAnswer() {
+      isModelAnswer = !isModelAnswer;
+      const btn = document.getElementById('modelAnswerBtn');
+      const examTitle = document.getElementById('examTitle');
+      const studentName = document.getElementById('studentNameCell');
+
+      if (isModelAnswer) {
+        document.body.classList.add('model-answer-active');
+        btn.innerText = "📄 Student Test View";
+        btn.style.background = "#0e5c4d";
+        btn.style.borderColor = "#7ea698";
+        examTitle.innerText = "Exam (Model Answer & Rubrics)";
+        studentName.innerText = "Model Answer / إجابة نموذجية";
+
+        document.querySelectorAll('.rubric-strip').forEach(table => {
+          const cells = table.querySelectorAll('td');
+          cells.forEach((td, idx) => {
+            if (idx < cells.length - 1) {
+              if (td.innerText.trim() === '') td.innerText = "1";
+            } else {
+              if (!td.innerText.includes('/')) {
+                td.innerText = (cells.length - 1) + " / " + (cells.length - 1);
+              }
+            }
+          });
+        });
+      } else {
+        document.body.classList.remove('model-answer-active');
+        btn.innerText = "🔑 Model Answer";
+        btn.style.background = "#b91c1c";
+        btn.style.borderColor = "#ef4444";
+        examTitle.innerText = "First Period Exam";
+        studentName.innerText = "";
+
+        document.querySelectorAll('.rubric-strip').forEach(table => {
+          const cells = table.querySelectorAll('td');
+          cells.forEach((td, idx) => {
+            if (idx < cells.length - 1) {
+              td.innerText = "";
+            } else {
+              td.innerText = "/ " + (cells.length - 1);
+            }
+          });
+        });
+      }
+    }
 
     function clearAllTemplateData() {
       if (confirm('هل أنت متأكد من تفريغ النموذج ومسح جميع البيانات والأسئلة والبدء من جديد؟')) {
-        localStorage.removeItem('english_exam_v3_clean_pages');
-        localStorage.removeItem('english_exam_v3_clean_counter');
+        localStorage.removeItem('english_exam_v8_clean_pages');
+        localStorage.removeItem('english_exam_v8_clean_counter');
         location.reload();
       }
     }
 
-    // تبديل المرحلة بما يشمل Pioneer للمتوسط
     function changeStage(stage) {
       const stageEn = document.getElementById('stageEnglishText');
       const stageAr = document.getElementById('stageArabicText');
@@ -757,7 +1014,7 @@
               <div class="footer-row">
                 <div class="footer-vision">✨ With my best wishes ✨</div>
                 <div style="display:flex; align-items:center; gap:8px;">
-                  <span class="page-follow-tag" style="font-size: 11px; color: #0e5c4d; font-weight: 800;" contenteditable="true">انتهت الأسئلة</span>
+                  <span class="footer-badge-text follow-badge" id="p${newPageNum}_follow_tag">انتهت الأسئلة</span>
                   <div class="page-num page-num-tag" style="border: none;">Page ${newPageNum} of ${newPageNum}</div>
                 </div>
               </div>
@@ -803,7 +1060,7 @@
         targetSelect.appendChild(opt);
 
         const pageNumTag = page.querySelector('.page-num-tag');
-        const followTag = page.querySelector('.page-follow-tag');
+        const followTag = page.querySelector('.footer-badge-text');
 
         if (pageNumTag) {
           pageNumTag.innerText = `Page ${pageIdx} of ${totalPages}`;
@@ -816,10 +1073,10 @@
 
         if (followTag) {
           if (pageIdx < totalPages) {
-            followTag.className = 'follow-badge page-follow-tag';
-            followTag.innerHTML = 'FOLLOW ➔';
+            followTag.className = 'footer-badge-text follow-badge';
+            followTag.innerText = 'FOLLOW ➔';
           } else {
-            followTag.className = 'page-follow-tag';
+            followTag.className = 'footer-badge-text';
             followTag.innerText = 'انتهت الأسئلة';
           }
         }
@@ -828,6 +1085,13 @@
       if (document.querySelector(`option[value="${currentSelected}"]`)) {
         targetSelect.value = currentSelected;
       }
+    }
+
+    function resizeBox(areaId, val, labelId) {
+      const area = document.getElementById(areaId);
+      if (area) area.style.height = val + 'px';
+      const lbl = document.getElementById(labelId);
+      if (lbl) lbl.innerText = val + 'px';
     }
 
     function deleteQuestion(boxId) {
@@ -857,6 +1121,7 @@
       rubricTable.innerHTML = newRowHtml;
     }
 
+    // إضافة سؤال جديد مع تزويده بزر إضافة الصورة وأزرار الأجزاء مباشرة
     function addNewEnglishQuestion() {
       qCounter++;
       const pageWrapperId = document.getElementById('targetPageSelect').value;
@@ -870,8 +1135,11 @@
 
       const boxId = `q_box_${qCounter}`;
       const areaId = `q_area_${qCounter}`;
+      const lblId = `px_lbl_${qCounter}`;
       const rubricId = `rubric_table_${qCounter}`;
       const markLblId = `q_mark_lbl_${qCounter}`;
+      const fileId = `file_auto_${qCounter}`;
+      const imgId = `img_auto_${qCounter}`;
 
       const box = document.createElement('div');
       box.className = 'question-box';
@@ -883,7 +1151,38 @@
       let innerContentHtml = '';
       let rubricHtml = '';
 
-      if (qType === 'handwriting') {
+      if (qType === 'image_q') {
+        sectionTitle = `${qCounter}) Observation / Visual Question`;
+        promptTitle = `Q${qCounter}: Look at the picture and answer the questions:`;
+        markValue = "4";
+
+        innerContentHtml = `
+          <div id="${areaId}" class="q-body-content" style="height: 160px;">
+            <div class="embedded-img-wrap">
+              <div class="embedded-img-card">
+                <img id="${imgId}" src="https://via.placeholder.com/140x100?text=Click+to+Upload" title="Click to upload image" onclick="document.getElementById('${fileId}').click();">
+                <input type="file" id="${fileId}" accept="image/*" style="display:none;" onchange="loadQuestionImg(this, '${imgId}')">
+                <div style="font-size:10.5px; color:#64748b;" class="no-print">Click to change</div>
+              </div>
+              <div style="flex:1;" contenteditable="true">
+                1. What can you see in the picture? ....................................................<br><br>
+                2. Write a sentence about the scene: .....................................................
+              </div>
+            </div>
+          </div>
+        `;
+
+        rubricHtml = `
+          <table class="rubric-strip" id="${rubricId}">
+            <tr>
+              <th contenteditable="true">Q${qCounter} Mark</th>
+              <th>1</th><td contenteditable="true"></td><th>2</th><td contenteditable="true"></td>
+              <th>3</th><td contenteditable="true"></td><th>4</th><td contenteditable="true"></td>
+              <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 4</td>
+            </tr>
+          </table>
+        `;
+      } else if (qType === 'handwriting') {
         sectionTitle = `E) Handwriting`;
         promptTitle = `Q${qCounter}- Copy the following sentence neatly on the lines below:`;
         markValue = "1";
@@ -912,15 +1211,19 @@
         `;
       } else if (qType === 'reading_split') {
         sectionTitle = `${qCounter}) Reading Comprehension`;
-        promptTitle = `Q${qCounter}: Read the text, then answer the questions below:`;
+        promptTitle = `Q${qCounter}: Read the passage, then answer the questions below:`;
         markValue = "6";
 
         innerContentHtml = `
-          <div id="${areaId}" class="q-body-content" style="height: 180px;" contenteditable="true">
+          <div id="${areaId}" class="q-body-content" style="height: 220px;" contenteditable="true">
             <div style="background:#f8fafc; border:1px solid #e2e8f0; padding:6px; border-radius:4px; margin-bottom:6px;">
               <strong>Passage:</strong> Write your reading passage here...
             </div>
-            1. Question prompt goes here ....................<br>
+            <div class="sub-part-header">
+              <span>A) Choose the correct answer:</span>
+              <span style="font-size:11px; font-weight:normal;">(Marks)</span>
+            </div>
+            1. Question prompt goes here .................... <span class="ans-key">[ ➔ Choice 1 ]</span><br>
             &nbsp;&nbsp;&nbsp;&nbsp;[ <strong>A.</strong> Choice 1 &nbsp;&nbsp;&nbsp;&nbsp; <strong>B.</strong> Choice 2 &nbsp;&nbsp;&nbsp;&nbsp; <strong>C.</strong> Choice 3 ]
           </div>
         `;
@@ -929,12 +1232,9 @@
           <table class="rubric-strip" id="${rubricId}">
             <tr>
               <th contenteditable="true">Q${qCounter} Mark</th>
-              <th>1</th><td contenteditable="true"></td>
-              <th>2</th><td contenteditable="true"></td>
-              <th>3</th><td contenteditable="true"></td>
-              <th>4</th><td contenteditable="true"></td>
-              <th>5</th><td contenteditable="true"></td>
-              <th>6</th><td contenteditable="true"></td>
+              <th>1</th><td contenteditable="true"></td><th>2</th><td contenteditable="true"></td>
+              <th>3</th><td contenteditable="true"></td><th>4</th><td contenteditable="true"></td>
+              <th>5</th><td contenteditable="true"></td><th>6</th><td contenteditable="true"></td>
               <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 6</td>
             </tr>
           </table>
@@ -948,8 +1248,8 @@
           <div id="${areaId}" class="q-body-content" style="height: 110px;">
             <div style="border:1.5px dashed #0e5c4d; background:#f0fdf4; padding:4px 10px; text-align:center; font-weight:700; border-radius:5px; margin-bottom:6px; color:#064e3b;" contenteditable="true">[ word1 — word2 — word3 — word4 ]</div>
             <div contenteditable="true">
-              1. Sentence prompt with missing word (........................).<br>
-              2. Another sentence prompt (........................).
+              1. Sentence prompt with missing word (<span class="blank-dots">........................</span><span class="ans-key">word1</span>).<br>
+              2. Another sentence prompt (<span class="blank-dots">........................</span><span class="ans-key">word2</span>).
             </div>
           </div>
         `;
@@ -971,8 +1271,8 @@
 
         innerContentHtml = `
           <div id="${areaId}" class="q-body-content" style="height: 110px;" contenteditable="true">
-            1. Sentence prompt ( <strong>A.</strong> option 1 — <strong>B.</strong> option 2 — <strong>C.</strong> option 3 ).<br>
-            2. Another sentence ( <strong>A.</strong> option 1 — <strong>B.</strong> option 2 — <strong>C.</strong> option 3 ).
+            1. Sentence prompt ( <strong>A.</strong> option 1 — <strong>B.</strong> option 2 — <strong>C.</strong> option 3 ). <span class="ans-key">[ ➔ Option 1 ]</span><br>
+            2. Another sentence ( <strong>A.</strong> option 1 — <strong>B.</strong> option 2 — <strong>C.</strong> option 3 ). <span class="ans-key">[ ➔ Option 2 ]</span>
           </div>
         `;
 
@@ -1015,7 +1315,14 @@
 
       box.innerHTML = `
         <div class="expand-control-bar no-print">
-          <button class="btn-delete-q" onclick="deleteQuestion('${boxId}')">✕ Delete Question</button>
+          <span>↔ Height:</span>
+          <input type="range" min="60" max="420" value="130" oninput="resizeBox('${areaId}', this.value, '${lblId}')">
+          <span class="px-label" id="${lblId}">130px</span>
+          <button class="btn-mini-tool" onclick="appendImageToQuestion('${areaId}')">📷 Add Image</button>
+          <button class="btn-mini-tool" onclick="appendSubPart('${areaId}', 'wh')">➕ Add (Wh-)</button>
+          <button class="btn-mini-tool" onclick="appendSubPart('${areaId}', 'mcq')">➕ Add (MCQ)</button>
+          <button class="btn-mini-tool" onclick="appendSubPart('${areaId}', 'tf')">➕ Add (T/F)</button>
+          <button class="btn-delete-q" onclick="deleteQuestion('${boxId}')">✕ Delete</button>
         </div>
 
         <div class="section-bar">
@@ -1041,27 +1348,27 @@
         const reader = new FileReader();
         reader.onload = function(e) {
           document.getElementById('schoolLogo').src = e.target.result;
-          localStorage.setItem('english_exam_v3_logo', e.target.result);
+          localStorage.setItem('english_exam_v8_logo', e.target.result);
         };
         reader.readAsDataURL(input.files[0]);
       }
     }
 
     function saveExamData() {
-      localStorage.setItem('english_exam_v3_clean_pages', document.getElementById('pagesContainer').innerHTML);
-      localStorage.setItem('english_exam_v3_clean_counter', qCounter);
+      localStorage.setItem('english_exam_v8_clean_pages', document.getElementById('pagesContainer').innerHTML);
+      localStorage.setItem('english_exam_v8_clean_counter', qCounter);
       alert('Exam template saved successfully!');
     }
 
     window.onload = function() {
-      const savedLogo = localStorage.getItem('english_exam_v3_logo');
+      const savedLogo = localStorage.getItem('english_exam_v8_logo');
       if (savedLogo) {
         document.getElementById('schoolLogo').src = savedLogo;
       }
-      const savedPages = localStorage.getItem('english_exam_v3_clean_pages');
+      const savedPages = localStorage.getItem('english_exam_v8_clean_pages');
       if (savedPages) {
         document.getElementById('pagesContainer').innerHTML = savedPages;
-        const savedCounter = localStorage.getItem('english_exam_v3_clean_counter');
+        const savedCounter = localStorage.getItem('english_exam_v8_clean_counter');
         if (savedCounter) qCounter = parseInt(savedCounter);
         updateAllPagesFooterAndDropdown();
       }
