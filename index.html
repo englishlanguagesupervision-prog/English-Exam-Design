@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <title>English Exam Paper Template - Al-Bayariq Private Schools</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800;900&family=Alexandria:wght@400;600;700;800&display=swap');
+
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0f172a;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #0f172a;
+      direction: ltr;
+    }
+
+    /* الشريط العلوي */
+    .top-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #1e293b;
+      border-bottom: 2px solid #c19a4b;
+      padding: 8px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+      gap: 10px;
+    }
+
+    .toolbar-left, .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      background: #c19a4b;
+      color: #0f172a;
+      border: 1px solid #c19a4b;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 12.5px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-action:hover {
+      background: #d4af37;
+      transform: translateY(-1px);
+    }
+
+    .btn-danger {
+      background: #ef4444 !important;
+      border-color: #dc2626 !important;
+      color: #ffffff !important;
+    }
+
+    .btn-print-main {
+      background: #0e5c4d;
+      color: #ffffff;
+      border: 1px solid #7ea698;
+    }
+
+    .btn-print-main:hover {
+      background: #147a66;
+    }
+
+    .select-tool {
+      background: #0f172a;
+      color: #f8fafc;
+      border: 1.5px solid #c19a4b;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 12.5px;
+      outline: none;
+    }
+
+    /* زر الواتساب */
+    .whatsapp-btn {
+      background: #25D366;
+      color: #ffffff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: all 0.2s;
+    }
+
+    .whatsapp-btn:hover {
+      background: #20bd5a;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(37,211,102,0.4);
+    }
+
+    .whatsapp-btn svg {
+      width: 17px;
+      height: 17px;
+      fill: currentColor;
+    }
+
+    /* صفحة A4 */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 15px auto;
+      background: #ffffff;
+      padding: 8mm;
+      position: relative;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media print {
+      body { background: transparent; padding: 0; }
+      .top-toolbar, .no-print {
+        display: none !important;
+      }
+      .page {
+        margin: 0 !important;
+        box-shadow: none !important;
+        height: 297mm !important;
+        max-height: 297mm !important;
+      }
+      .question-box {
+        page-break-inside: avoid;
+      }
+      img {
+        display: block !important;
+        max-width: 100% !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      [contenteditable="true"] {
+        outline: none !important;
+      }
+    }
+
+    .outer-border {
+      border: 2.2px solid #0e5c4d;
+      height: 100%;
+      padding: 3.5mm;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .inner-border {
+      border: 1.5px solid #c19a4b;
+      height: 100%;
+      padding: 6mm 8mm 5mm 8mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .main-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* الترويسة */
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+
+    .header-col { width: 35%; }
+
+    .header-col.left-side {
+      text-align: left;
+      font-size: 12px;
+      line-height: 1.35;
+      color: #0e5c4d;
+      font-weight: 800;
+    }
+
+    .header-col.center {
+      width: 30%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .logo-container { cursor: pointer; }
+    .header-col.center img {
+      max-height: 65px;
+      max-width: 140px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .header-col.right-side {
+      text-align: right;
+      font-size: 12px;
+      line-height: 1.35;
+      color: #0e5c4d;
+      font-weight: 800;
+      direction: rtl;
+      font-family: 'Alexandria', sans-serif;
+    }
+
+    .sub-dep {
+      font-size: 11px;
+      color: #2e4d44;
+      font-weight: 600;
+    }
+
+    .divider-line {
+      height: 2.5px;
+      background: linear-gradient(to right, #0e5c4d 70%, #c19a4b 30%);
+      margin: 4px 0 6px 0;
+    }
+
+    .exam-title-box {
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .exam-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: #0e5c4d;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .exam-subtitle {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #0e5c4d;
+      margin-top: 1px;
+    }
+
+    /* جدول بيانات الطالب */
+    .info-container {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .info-table {
+      flex: 1;
+      border-collapse: collapse;
+      font-size: 11px;
+    }
+
+    .info-table th {
+      background-color: #edf5f2;
+      color: #0e5c4d;
+      font-weight: 800;
+      padding: 3px;
+      border: 1px solid #7ea698;
+      text-align: center;
+    }
+
+    .info-table td {
+      border: 1px solid #7ea698;
+      padding: 3px;
+      text-align: center;
+      font-weight: 700;
+      height: 24px;
+    }
+
+    .total-marks-card {
+      width: 95px;
+      border: 1.5px solid #0e5c4d;
+      border-radius: 4px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .total-marks-title {
+      background-color: #edf5f2;
+      color: #0e5c4d;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 0;
+      border-bottom: 1px solid #0e5c4d;
+      text-transform: uppercase;
+    }
+
+    .total-marks-val {
+      font-size: 17px;
+      font-weight: 900;
+      color: #0e5c4d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+    }
+
+    /* الأسئلة */
+    .questions-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .question-box {
+      border: 1px dashed #cbd5e1;
+      border-radius: 5px;
+      padding: 5px;
+      position: relative;
+      background: #ffffff;
+    }
+
+    .section-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #edf5f2;
+      border-left: 5px solid #c19a4b;
+      padding: 2px 8px;
+      margin-bottom: 3px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .section-name, .section-mark {
+      font-size: 13px;
+      font-weight: 800;
+      color: #0e5c4d;
+      outline: none;
+    }
+
+    .q-prompt-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3px;
+    }
+
+    .q-prompt {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #0b3d33;
+      outline: none;
+      flex-grow: 1;
+    }
+
+    .score-badge {
+      width: 40px;
+      height: 24px;
+      border: 1.5px solid #475569;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 13px;
+      background-color: #ffffff;
+      outline: none;
+      cursor: text;
+    }
+
+    .expand-control-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background-color: #1e293b;
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: bold;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+    }
+
+    .expand-control-bar input[type="range"] {
+      flex: 1;
+      min-width: 80px;
+      accent-color: #c19a4b;
+      cursor: pointer;
+    }
+
+    .px-label { color: #facc15; font-weight: 800; min-width: 36px; }
+
+    .btn-delete-q {
+      background: #ef4444;
+      color: #fff;
+      border: none;
+      padding: 2px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    .q-body-content {
+      border: 1px solid #e2e8f0;
+      background: #fafcfb;
+      border-radius: 4px;
+      padding: 6px;
+      font-size: 12.5px;
+      line-height: 1.6;
+      outline: none;
+      min-height: 60px;
+      overflow: hidden;
+    }
+
+    /* معرض الصور المتعددة */
+    .images-grid-container {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .images-grid-container.stacked {
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+
+    .images-grid-container.side-by-side {
+      flex-direction: row !important;
+      justify-content: space-around !important;
+      flex-wrap: wrap !important;
+    }
+
+    .image-card-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      border: 1px dashed #cbd5e1;
+      padding: 6px;
+      background: #ffffff;
+      border-radius: 6px;
+    }
+
+    .image-card-item img {
+      max-height: 120px;
+      object-fit: contain;
+      border-radius: 4px;
+      border: 1px solid #94a3b8;
+      cursor: pointer;
+    }
+
+    .image-caption-input {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #0e5c4d;
+      outline: none;
+      text-align: center;
+      width: 100%;
+    }
+
+    .btn-mini-control {
+      background: #334155;
+      color: #f8fafc;
+      border: 1px solid #64748b;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-mini-control:hover { background: #475569; }
+
+    /* بنك الكلمات والصناديق التعليمية */
+    .word-bank-box {
+      border: 1.5px dashed #0e5c4d;
+      background: #f0fdf4;
+      padding: 4px 10px;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      border-radius: 5px;
+      margin-bottom: 6px;
+      color: #064e3b;
+    }
+
+    /* أشرطة الرصد والدرجات - من اليسار تماماً */
+    .rubric-strip {
+      border-collapse: collapse;
+      font-size: 10.5px;
+      border: 1.5px solid #334155;
+      background: #ffffff;
+      margin-top: 4px;
+      margin-left: 0 !important;
+      margin-right: auto !important;
+    }
+
+    .rubric-strip th, .rubric-strip td {
+      border: 1px solid #64748b;
+      text-align: center;
+      padding: 1px 6px;
+      height: 20px;
+    }
+
+    .rubric-strip th { background-color: #e2e8f0; font-weight: 800; color: #0f172a; }
+    .rubric-strip td { font-weight: 800; color: #0e5c4d; min-width: 24px; }
+
+    /* التذييل */
+    .footer-divider {
+      height: 1.5px;
+      background-color: #c19a4b;
+      margin: 3px 0;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10.5px;
+      font-weight: 700;
+    }
+
+    .footer-vision { 
+      color: #0e5c4d; 
+      font-family: 'Alexandria', sans-serif;
+      direction: rtl;
+    }
+    
+    .page-num {
+      color: #0e5c4d;
+      font-weight: 800;
+      border-left: 1.5px solid #0e5c4d;
+      padding-left: 6px;
+    }
+
+    .follow-badge {
+      background-color: #0e5c4d;
+      color: #ffffff;
+      border: 1px solid #c19a4b;
+      padding: 1px 7px;
+      border-radius: 3px;
+      font-size: 9.5px;
+      font-weight: 800;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شريط التحكم العلوي -->
+  <div class="top-toolbar no-print">
+    <div class="toolbar-left">
+      <!-- اختيار المرحلة -->
+      <select id="stageSelect" class="select-tool" onchange="changeStage(this.value)">
+        <option value="secondary" selected>🎓 Secondary Stage (Mega Goal)</option>
+        <option value="intermediate">🏫 Intermediate Stage (Super Goal)</option>
+        <option value="primary">🎒 Primary Stage (We Can)</option>
+      </select>
+
+      <!-- اختيار الصفحة المستهدفة -->
+      <select id="targetPageSelect" class="select-tool">
+        <option value="page1_wrapper">Page 1</option>
+        <option value="page2_wrapper">Page 2</option>
+      </select>
+
+      <!-- اختيار نوع السؤال مع ميزة الصور المتعددة -->
+      <select id="questionTypeSelect" class="select-tool">
+        <option value="reading">📖 Reading Comprehension</option>
+        <option value="multi-image">🖼️ Multi-Images (Side-by-side / Stacked)</option>
+        <option value="vocab">🔤 Vocabulary (Word Box)</option>
+        <option value="grammar">⚙️ Grammar (MCQ)</option>
+        <option value="spelling">✍️ Spelling / Missing Letters</option>
+        <option value="composition">📝 Guided / Free Composition</option>
+      </select>
+
+      <button class="btn-action" onclick="addNewEnglishQuestion()">➕ Add Question</button>
+      <button class="btn-action" onclick="addNewExamPage()">📄 ➕ Add Page</button>
+      <button class="btn-action btn-danger" onclick="removeLastExamPage()">📄 ✖ Remove Page</button>
+      <button class="btn-action" onclick="document.getElementById('logoUploader').click();">📷 Logo</button>
+      <button class="btn-action" onclick="saveExamData();">💾 Save</button>
+      <button class="btn-action btn-print-main" onclick="window.print();">🖨️ Print (A4)</button>
+      <input type="file" id="logoUploader" accept="image/*" style="display:none;" onchange="uploadLogo(this)">
+    </div>
+
+    <!-- زر واتساب التفاعلي -->
+    <div class="toolbar-right">
+      <a href="https://wa.me/966530665625" target="_blank" class="whatsapp-btn" title="Contact on WhatsApp">
+        <svg viewBox="0 0 24 24">
+          <path d="M12.031 2C6.496 2 2 6.48 2 12.012c0 1.942.556 3.755 1.517 5.29L2 22l4.838-1.503A9.957 9.957 0 0 0 12.031 22c5.534 0 10.03-4.48 10.03-10.012S17.565 2 12.031 2zm5.727 14.195c-.242.684-1.203 1.258-1.742 1.312-.486.05-1.12.083-3.415-.86-2.936-1.206-4.834-4.22-4.98-4.417-.146-.197-1.187-1.579-1.187-3.013 0-1.433.748-2.14 1.014-2.434.267-.294.583-.368.777-.368.194 0 .388.002.558.01.182.008.425-.069.664.507.243.587.825 2.014.898 2.162.073.147.121.32.024.516-.097.196-.146.318-.291.49-.146.172-.307.385-.438.516-.146.147-.298.307-.128.6.17.293.755 1.246 1.621 2.018 1.114.993 2.052 1.302 2.344 1.448.291.147.462.122.632-.073.17-.196.729-.855.923-1.149.194-.294.389-.245.656-.147.267.098 1.699.802 1.99 948.292.147.486.221.559.343.073.122.073.708-.169 1.392z"/>
+        </svg>
+        <span>WhatsApp</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- حاوية كافة الصفحات -->
+  <div id="pagesContainer">
+
+    <!-- ======================== PAGE 1 ======================== -->
+    <div class="page" id="page1">
+      <div class="outer-border">
+        <div class="inner-border">
+          
+          <div class="main-body">
+            <!-- الترويسة -->
+            <div>
+              <div class="header-top">
+                <div class="header-col left-side" id="headerEnglishSide">
+                  Kingdom of Saudi Arabia<br>
+                  Ministry of Education<br>
+                  Al-Bayariq Private Schools<br>
+                  <span class="sub-dep" id="stageEnglishText">High Secondary Section</span>
+                </div>
+                
+                <div class="header-col center">
+                  <div class="logo-container" onclick="document.getElementById('logoUploader').click();" title="Click to upload logo">
+                    <img id="schoolLogo" src="d4b18761-7549-4fc4-b88b-8a2fe8b8084b.png" alt="Bayariq Logo" onerror="this.src='https://i.ibb.co/3W6qWqf/bayariq-logo.png'">
+                  </div>
+                </div>
+
+                <div class="header-col right-side">
+                  المملكة العربية السعودية<br>
+                  وزارة التعليم<br>
+                  مدارس البيارق الأهلية<br>
+                  <span class="sub-dep" id="stageArabicText">القسم الثانوي</span>
+                </div>
+              </div>
+
+              <div class="divider-line"></div>
+
+              <div class="exam-title-box">
+                <div class="exam-title" id="examTitle" contenteditable="true">First Period Exam (1st Term)</div>
+                <div class="exam-subtitle" id="examSubtitle" contenteditable="true">Grade 12 / 3rd Secondary — Mega Goal 3</div>
+              </div>
+
+              <!-- جدول البيانات -->
+              <div class="info-container">
+                <table class="info-table">
+                  <tr>
+                    <th style="width: 20%;">SEMESTER</th>
+                    <th style="width: 15%;">DATE</th>
+                    <th style="width: 25%;">COURSE</th>
+                    <th style="width: 15%;">CLASS</th>
+                    <th style="width: 25%;">NAME</th>
+                  </tr>
+                  <tr>
+                    <td contenteditable="true">1st Semester</td>
+                    <td contenteditable="true">&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;/ 1448 H</td>
+                    <td id="courseNameCell" contenteditable="true">English (Mega Goal 3)</td>
+                    <td id="classNameCell" contenteditable="true">3rd Sec. / &nbsp;&nbsp;&nbsp;</td>
+                    <td contenteditable="true"></td>
+                  </tr>
+                </table>
+                <div class="total-marks-card">
+                  <div class="total-marks-title">TOTAL MARKS</div>
+                  <div class="total-marks-val" id="totalMarksCard" contenteditable="true">/ 20</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- أسئلة الصفحة 1 -->
+            <div id="page1_wrapper" class="questions-wrapper">
+              
+              <!-- Q1: Reading -->
+              <div class="question-box" id="q_box_1">
+                <div class="expand-control-bar no-print">
+                  <span>↔ Box Height:</span>
+                  <input type="range" min="120" max="420" value="230" oninput="resizeBox('q_area_1', this.value, 'px_lbl_1')">
+                  <span class="px-label" id="px_lbl_1">230px</span>
+                  <button class="btn-delete-q" onclick="deleteQuestion('q_box_1')">✕ Delete</button>
+                </div>
+
+                <div class="section-bar">
+                  <div class="section-name" contenteditable="true">1) Reading Comprehension</div>
+                  <div class="section-mark" id="q_mark_lbl_1" contenteditable="true">(4 Marks)</div>
+                </div>
+
+                <div class="q-prompt-wrap">
+                  <div class="q-prompt" contenteditable="true">Q1: Read the text and choose the best answer to each question:</div>
+                  <div class="score-badge" contenteditable="true" oninput="updateRubric('1', this.innerText)">4</div>
+                </div>
+
+                <div id="q_area_1" class="q-body-content" style="height: 230px;" contenteditable="true">
+                  <strong>Honeybees and Flowers:</strong> Honeybees and flowers are two species that share a symbiotic relationship. Honeybees eat the nectar and pollen made by flowers to survive and grow. When flower pollen is spread to another flower, the new flower can make seeds (pollination). Because flowers need honeybees, they come in bright colors and sweet smells.<br><br>
+                  1. How do flowers attract bees?<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;A. They shoot pollen &nbsp;&nbsp;&nbsp;&nbsp; B. They are colorful with sweet smell<br>
+                  2. Honeybees and flowers share a .................... relationship.<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;A. symbiotic &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B. symbolic
+                </div>
+
+                <table class="rubric-strip" id="rubric_table_1">
+                  <tr>
+                    <th contenteditable="true">Q1 Mark</th>
+                    <th>1</th><td contenteditable="true"></td>
+                    <th>2</th><td contenteditable="true"></td>
+                    <th>3</th><td contenteditable="true"></td>
+                    <th>4</th><td contenteditable="true"></td>
+                    <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 4</td>
+                  </tr>
+                </table>
+              </div>
+
+              <!-- Q2: Spelling -->
+              <div class="question-box" id="q_box_2">
+                <div class="expand-control-bar no-print">
+                  <span>↔ Box Height:</span>
+                  <input type="range" min="50" max="250" value="75" oninput="resizeBox('q_area_2', this.value, 'px_lbl_2')">
+                  <span class="px-label" id="px_lbl_2">75px</span>
+                  <button class="btn-delete-q" onclick="deleteQuestion('q_box_2')">✕ Delete</button>
+                </div>
+
+                <div class="section-bar">
+                  <div class="section-name" contenteditable="true">2) Spelling / Orthography</div>
+                  <div class="section-mark" id="q_mark_lbl_2" contenteditable="true">(2 Marks)</div>
+                </div>
+
+                <div class="q-prompt-wrap">
+                  <div class="q-prompt" contenteditable="true">Q2: Complete the missing letters:</div>
+                  <div class="score-badge" contenteditable="true" oninput="updateRubric('2', this.innerText)">2</div>
+                </div>
+
+                <div id="q_area_2" class="q-body-content" style="height: 75px;" contenteditable="true">
+                  1. dev.....ted &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Pi.....neer<br>
+                  3. rel.....able &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. exte.....sive
+                </div>
+
+                <table class="rubric-strip" id="rubric_table_2">
+                  <tr>
+                    <th contenteditable="true">Q2 Mark</th>
+                    <th>1</th><td contenteditable="true"></td>
+                    <th>2</th><td contenteditable="true"></td>
+                    <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 2</td>
+                  </tr>
+                </table>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- تذييل الصفحة 1 -->
+          <div>
+            <div class="footer-divider"></div>
+            <div class="footer-row">
+              <div class="footer-vision">رؤيتنا : بناء الشخصية المتكاملة للطالب</div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span class="follow-badge page-follow-tag">FOLLOW ➔</span>
+                <div class="page-num page-num-tag">Page 1 of 2</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================== PAGE 2 ======================== -->
+    <div class="page" id="page2">
+      <div class="outer-border">
+        <div class="inner-border">
+          
+          <div class="main-body">
+            <div id="page2_wrapper" class="questions-wrapper">
+              
+              <!-- Q3: Vocabulary -->
+              <div class="question-box" id="q_box_3">
+                <div class="expand-control-bar no-print">
+                  <span>↔ Box Height:</span>
+                  <input type="range" min="80" max="300" value="115" oninput="resizeBox('q_area_3', this.value, 'px_lbl_3')">
+                  <span class="px-label" id="px_lbl_3">115px</span>
+                  <button class="btn-delete-q" onclick="deleteQuestion('q_box_3')">✕ Delete</button>
+                </div>
+
+                <div class="section-bar">
+                  <div class="section-name" contenteditable="true">3) Vocabulary</div>
+                  <div class="section-mark" id="q_mark_lbl_3" contenteditable="true">(4 Marks)</div>
+                </div>
+
+                <div class="q-prompt-wrap">
+                  <div class="q-prompt" contenteditable="true">Q3: Fill in the blanks with the correct words from the box:</div>
+                  <div class="score-badge" contenteditable="true" oninput="updateRubric('3', this.innerText)">4</div>
+                </div>
+
+                <div id="q_area_3" class="q-body-content" style="height: 115px;">
+                  <div class="word-bank-box" contenteditable="true">[ compensate — invaluable — devoted — predators ]</div>
+                  <div contenteditable="true">
+                    1. Lions are thought to be one of the most dangerous (........................) on Earth.<br>
+                    2. To (........................) for poor eyesight, zebras have excellent hearing.
+                  </div>
+                </div>
+
+                <table class="rubric-strip" id="rubric_table_3">
+                  <tr>
+                    <th contenteditable="true">Q3 Mark</th>
+                    <th>1</th><td contenteditable="true"></td>
+                    <th>2</th><td contenteditable="true"></td>
+                    <th>3</th><td contenteditable="true"></td>
+                    <th>4</th><td contenteditable="true"></td>
+                    <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 4</td>
+                  </tr>
+                </table>
+              </div>
+
+              <!-- Q4: Grammar -->
+              <div class="question-box" id="q_box_4">
+                <div class="expand-control-bar no-print">
+                  <span>↔ Box Height:</span>
+                  <input type="range" min="80" max="300" value="115" oninput="resizeBox('q_area_4', this.value, 'px_lbl_4')">
+                  <span class="px-label" id="px_lbl_4">115px</span>
+                  <button class="btn-delete-q" onclick="deleteQuestion('q_box_4')">✕ Delete</button>
+                </div>
+
+                <div class="section-bar">
+                  <div class="section-name" contenteditable="true">4) Grammar</div>
+                  <div class="section-mark" id="q_mark_lbl_4" contenteditable="true">(4 Marks)</div>
+                </div>
+
+                <div class="q-prompt-wrap">
+                  <div class="q-prompt" contenteditable="true">Q4: Choose the correct answer between brackets:</div>
+                  <div class="score-badge" contenteditable="true" oninput="updateRubric('4', this.innerText)">4</div>
+                </div>
+
+                <div id="q_area_4" class="q-body-content" style="height: 115px;" contenteditable="true">
+                  1. Can I have ( <strong>A.</strong> others — <strong>B.</strong> another — <strong>C.</strong> some others ) cup of tea?<br>
+                  2. He ( <strong>A.</strong> used to — <strong>B.</strong> is used to — <strong>C.</strong> use to ) work in a garage.
+                </div>
+
+                <table class="rubric-strip" id="rubric_table_4">
+                  <tr>
+                    <th contenteditable="true">Q4 Mark</th>
+                    <th>1</th><td contenteditable="true"></td>
+                    <th>2</th><td contenteditable="true"></td>
+                    <th>3</th><td contenteditable="true"></td>
+                    <th>4</th><td contenteditable="true"></td>
+                    <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 4</td>
+                  </tr>
+                </table>
+              </div>
+
+              <!-- Q5: Writing -->
+              <div class="question-box" id="q_box_5">
+                <div class="expand-control-bar no-print">
+                  <span>↔ Box Height:</span>
+                  <input type="range" min="100" max="380" value="170" oninput="resizeBox('q_area_5', this.value, 'px_lbl_5')">
+                  <span class="px-label" id="px_lbl_5">170px</span>
+                  <button class="btn-delete-q" onclick="deleteQuestion('q_box_5')">✕ Delete</button>
+                </div>
+
+                <div class="section-bar">
+                  <div class="section-name" contenteditable="true">5) Writing / Composition</div>
+                  <div class="section-mark" id="q_mark_lbl_5" contenteditable="true">(6 Marks)</div>
+                </div>
+
+                <div class="q-prompt-wrap">
+                  <div class="q-prompt" contenteditable="true">Q5: Write a well-developed paragraph about: "Your Favourite Hobby"</div>
+                  <div class="score-badge" contenteditable="true">6</div>
+                </div>
+
+                <div id="q_area_5" class="q-body-content" style="height: 170px;" contenteditable="true">
+                  ................................................................................................................................................<br>
+                  ................................................................................................................................................<br>
+                  ................................................................................................................................................<br>
+                  ................................................................................................................................................
+                </div>
+
+                <!-- جدول تصحيح التعبير محاذى بالكامل لليسار -->
+                <table class="rubric-strip" id="rubric_table_5">
+                  <tr>
+                    <th>Criteria</th>
+                    <th>Ideas (2)</th><td contenteditable="true"></td>
+                    <th>Grammar (1.5)</th><td contenteditable="true"></td>
+                    <th>Spelling (1.5)</th><td contenteditable="true"></td>
+                    <th>Punctuation (1)</th><td contenteditable="true"></td>
+                    <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 6</td>
+                  </tr>
+                </table>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- تذييل الصفحة 2 -->
+          <div>
+            <div class="footer-divider"></div>
+            <div class="footer-row">
+              <div class="footer-vision">رؤيتنا : بناء الشخصية المتكاملة للطالب</div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span class="page-follow-tag" style="font-size: 11px; color: #0e5c4d; font-weight: 800;" contenteditable="true">With my best wishes — End of Questions</span>
+                <div class="page-num page-num-tag" style="border: none;">Page 2 of 2</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let qCounter = 5;
+    let imgItemCounter = 100;
+
+    // إضافة صفحة جديدة ديناميكياً (صفحة 3 أو 4 أو أكثر)
+    function addNewExamPage() {
+      const pages = document.querySelectorAll('.page');
+      const newPageNum = pages.length + 1;
+      const pagesContainer = document.getElementById('pagesContainer');
+
+      const pageDiv = document.createElement('div');
+      pageDiv.className = 'page';
+      pageDiv.id = `page${newPageNum}`;
+
+      pageDiv.innerHTML = `
+        <div class="outer-border">
+          <div class="inner-border">
+            <div class="main-body">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; border-bottom:1.5px solid #0e5c4d; padding-bottom:5px;">
+                <div style="font-weight:800; font-size:12px; color:#0e5c4d;">Page ${newPageNum} — Questions Continuation</div>
+                <span class="no-print" style="font-size:11px; color:#64748b;">(Page ${newPageNum})</span>
+              </div>
+              <div id="page${newPageNum}_wrapper" class="questions-wrapper">
+                <!-- Drop questions here -->
+              </div>
+            </div>
+            <div>
+              <div class="footer-divider"></div>
+              <div class="footer-row">
+                <div class="footer-vision">رؤيتنا : بناء الشخصية المتكاملة للطالب</div>
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span class="page-follow-tag" style="font-size: 11px; color: #0e5c4d; font-weight: 800;" contenteditable="true">With my best wishes — End of Questions</span>
+                  <div class="page-num page-num-tag" style="border: none;">Page ${newPageNum} of ${newPageNum}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      pagesContainer.appendChild(pageDiv);
+      updateAllPagesFooterAndDropdown();
+      pageDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // حذف الصفحة الأخيرة
+    function removeLastExamPage() {
+      const pages = document.querySelectorAll('.page');
+      if (pages.length <= 1) {
+        alert('Cannot remove the first page!');
+        return;
+      }
+      if (confirm(`Are you sure you want to remove Page ${pages.length}? All its questions will be deleted.`)) {
+        pages[pages.length - 1].remove();
+        updateAllPagesFooterAndDropdown();
+      }
+    }
+
+    // تحديث أرقام الصفحات والتذييل والقائمة المنسدلة
+    function updateAllPagesFooterAndDropdown() {
+      const pages = document.querySelectorAll('.page');
+      const totalPages = pages.length;
+      const targetSelect = document.getElementById('targetPageSelect');
+      const currentSelected = targetSelect.value;
+
+      targetSelect.innerHTML = '';
+
+      pages.forEach((page, index) => {
+        const pageIdx = index + 1;
+        page.id = `page${pageIdx}`;
+        const wrapper = page.querySelector('.questions-wrapper');
+        if (wrapper) wrapper.id = `page${pageIdx}_wrapper`;
+
+        // إضافة خيار في القائمة
+        const opt = document.createElement('option');
+        opt.value = `page${pageIdx}_wrapper`;
+        opt.innerText = `Page ${pageIdx}`;
+        targetSelect.appendChild(opt);
+
+        // ضبط التذييل
+        const pageNumTag = page.querySelector('.page-num-tag');
+        const followTag = page.querySelector('.page-follow-tag');
+
+        if (pageNumTag) {
+          pageNumTag.innerText = `Page ${pageIdx} of ${totalPages}`;
+          if (pageIdx === totalPages) {
+            pageNumTag.style.borderLeft = 'none';
+          } else {
+            pageNumTag.style.borderLeft = '1.5px solid #0e5c4d';
+          }
+        }
+
+        if (followTag) {
+          if (pageIdx < totalPages) {
+            followTag.className = 'follow-badge page-follow-tag';
+            followTag.innerHTML = 'FOLLOW ➔';
+          } else {
+            followTag.className = 'page-follow-tag';
+            followTag.innerText = 'With my best wishes — End of Questions';
+          }
+        }
+      });
+
+      if (document.querySelector(`option[value="${currentSelected}"]`)) {
+        targetSelect.value = currentSelected;
+      }
+    }
+
+    // تبديل تخطيط الصور (بجوار بعض أو تحت بعض)
+    function toggleImageLayout(containerId, mode) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      if (mode === 'stacked') {
+        container.classList.remove('side-by-side');
+        container.classList.add('stacked');
+      } else {
+        container.classList.remove('stacked');
+        container.classList.add('side-by-side');
+      }
+    }
+
+    // تكبير وتصغير الصور
+    function resizeImages(containerId, maxH) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      const imgs = container.querySelectorAll('img');
+      imgs.forEach(img => {
+        img.style.maxHeight = maxH + 'px';
+      });
+    }
+
+    // إضافة بطاقة صورة إضافية في نفس السؤال
+    function addImageCard(containerId) {
+      imgItemCounter++;
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      const fileInputId = `file_add_${imgItemCounter}`;
+      const imgPreviewId = `img_add_${imgItemCounter}`;
+
+      const card = document.createElement('div');
+      card.className = 'image-card-item';
+      card.innerHTML = `
+        <img id="${imgPreviewId}" src="https://via.placeholder.com/140x110?text=Click+to+Upload" title="Click to upload" onclick="document.getElementById('${fileInputId}').click();">
+        <input type="file" id="${fileInputId}" accept="image/*" style="display:none;" onchange="loadQuestionImg(this, '${imgPreviewId}')">
+        <div class="image-caption-input" contenteditable="true">Picture ${container.children.length + 1}</div>
+        <button class="btn-delete-q no-print" onclick="this.parentElement.remove()">✕</button>
+      `;
+      container.appendChild(card);
+    }
+
+    // تبديل المرحلة
+    function changeStage(stage) {
+      const stageEn = document.getElementById('stageEnglishText');
+      const stageAr = document.getElementById('stageArabicText');
+      const examTitle = document.getElementById('examTitle');
+      const examSub = document.getElementById('examSubtitle');
+      const courseCell = document.getElementById('courseNameCell');
+      const classCell = document.getElementById('classNameCell');
+
+      if (stage === 'secondary') {
+        stageEn.innerText = "High Secondary Section";
+        stageAr.innerText = "القسم الثانوي";
+        examTitle.innerText = "First Period Exam (1st Term)";
+        examSub.innerText = "Grade 12 / 3rd Secondary — Mega Goal 3";
+        courseCell.innerText = "English (Mega Goal 3)";
+        classCell.innerText = "3rd Sec. / ";
+      } else if (stage === 'intermediate') {
+        stageEn.innerText = "Intermediate Section";
+        stageAr.innerText = "القسم المتوسط";
+        examTitle.innerText = "English Periodic Exam";
+        examSub.innerText = "Grade 8 / 2nd Intermediate — Super Goal 2";
+        courseCell.innerText = "English (Super Goal 2)";
+        classCell.innerText = "2nd Int. / ";
+      } else if (stage === 'primary') {
+        stageEn.innerText = "Elementary Section";
+        stageAr.innerText = "القسم الابتدائي";
+        examTitle.innerText = "English Periodic Exam";
+        examSub.innerText = "Grade 6 / Elementary — We Can 3";
+        courseCell.innerText = "English (We Can 3)";
+        classCell.innerText = "6th Prim. / ";
+      }
+    }
+
+    // فرد الارتفاع
+    function resizeBox(areaId, val, labelId) {
+      const area = document.getElementById(areaId);
+      if (area) area.style.height = val + 'px';
+      const lbl = document.getElementById(labelId);
+      if (lbl) lbl.innerText = val + 'px';
+    }
+
+    // حذف السؤال
+    function deleteQuestion(boxId) {
+      const box = document.getElementById(boxId);
+      if (box && confirm('Are you sure you want to delete this question?')) {
+        box.remove();
+      }
+    }
+
+    // تحديث شريط درجات السؤال ديناميكياً
+    function updateRubric(qNum, valueText) {
+      const cleanVal = parseInt(valueText.trim());
+      const rubricTable = document.getElementById(`rubric_table_${qNum}`);
+      const sectionMarkLbl = document.getElementById(`q_mark_lbl_${qNum}`);
+
+      if (!rubricTable || isNaN(cleanVal) || cleanVal <= 0) return;
+
+      if (sectionMarkLbl) {
+        sectionMarkLbl.innerText = `(${cleanVal} Marks)`;
+      }
+
+      let newRowHtml = `<tr><th contenteditable="true">Q${qNum} Mark</th>`;
+      for (let i = 1; i <= cleanVal; i++) {
+        newRowHtml += `<th>${i}</th><td contenteditable="true"></td>`;
+      }
+      newRowHtml += `<th>Total</th><td class="rubric-total-cell" contenteditable="true">/ ${cleanVal}</td></tr>`;
+
+      rubricTable.innerHTML = newRowHtml;
+    }
+
+    // إضافة سؤال جديد
+    function addNewEnglishQuestion() {
+      qCounter++;
+      const pageWrapperId = document.getElementById('targetPageSelect').value;
+      const qType = document.getElementById('questionTypeSelect').value;
+      const targetWrapper = document.getElementById(pageWrapperId);
+
+      if (!targetWrapper) {
+        alert('Target page wrapper not found!');
+        return;
+      }
+
+      const boxId = `q_box_${qCounter}`;
+      const areaId = `q_area_${qCounter}`;
+      const lblId = `px_lbl_${qCounter}`;
+      const rubricId = `rubric_table_${qCounter}`;
+      const markLblId = `q_mark_lbl_${qCounter}`;
+      const gridId = `grid_img_${qCounter}`;
+
+      const box = document.createElement('div');
+      box.className = 'question-box';
+      box.id = boxId;
+
+      let sectionTitle = `${qCounter}) General Question`;
+      let promptTitle = `Q${qCounter}: Answer the following question:`;
+      let innerContentHtml = '';
+
+      if (qType === 'multi-image') {
+        sectionTitle = `${qCounter}) Observation and Analysis (Pictures)`;
+        promptTitle = `Q${qCounter}: Look at the picture(s) and answer the questions below:`;
+        innerContentHtml = `
+          <div style="background:#f1f5f9; padding:4px 8px; border-radius:4px; margin-bottom:6px; display:flex; gap:8px; align-items:center;" class="no-print">
+            <span style="font-size:11px; font-weight:bold;">Layout:</span>
+            <button class="btn-mini-control" onclick="toggleImageLayout('${gridId}', 'side-by-side')">↔ Side by Side</button>
+            <button class="btn-mini-control" onclick="toggleImageLayout('${gridId}', 'stacked')">↕ Stacked (Under)</button>
+            <button class="btn-mini-control" onclick="addImageCard('${gridId}')">➕ Add Another Image</button>
+            <span style="font-size:11px; margin-left:auto;">Image Size:</span>
+            <input type="range" min="60" max="220" value="120" oninput="resizeImages('${gridId}', this.value)" style="width:80px;">
+          </div>
+
+          <div id="${gridId}" class="images-grid-container side-by-side">
+            <div class="image-card-item">
+              <img id="img_preview_${qCounter}_1" src="https://via.placeholder.com/140x110?text=Click+to+Upload" title="Click to upload" onclick="document.getElementById('file_input_${qCounter}_1').click();">
+              <input type="file" id="file_input_${qCounter}_1" accept="image/*" style="display:none;" onchange="loadQuestionImg(this, 'img_preview_${qCounter}_1')">
+              <div class="image-caption-input" contenteditable="true">Picture A</div>
+              <button class="btn-delete-q no-print" onclick="this.parentElement.remove()">✕</button>
+            </div>
+
+            <div class="image-card-item">
+              <img id="img_preview_${qCounter}_2" src="https://via.placeholder.com/140x110?text=Click+to+Upload" title="Click to upload" onclick="document.getElementById('file_input_${qCounter}_2').click();">
+              <input type="file" id="file_input_${qCounter}_2" accept="image/*" style="display:none;" onchange="loadQuestionImg(this, 'img_preview_${qCounter}_2')">
+              <div class="image-caption-input" contenteditable="true">Picture B</div>
+              <button class="btn-delete-q no-print" onclick="this.parentElement.remove()">✕</button>
+            </div>
+          </div>
+
+          <div id="${areaId}" class="q-body-content" style="height: 120px;" contenteditable="true">
+            1. Describe the difference between Picture A and Picture B: ....................................................<br><br>
+            2. What do both pictures have in common? .....................................................................................
+          </div>
+        `;
+      } else if (qType === 'reading') {
+        sectionTitle = `${qCounter}) Reading Comprehension`;
+        promptTitle = `Q${qCounter}: Read the text and choose the correct answer:`;
+        innerContentHtml = `
+          <div id="${areaId}" class="q-body-content" style="height: 180px;" contenteditable="true">
+            <strong>Passage:</strong> Insert short comprehension passage here...<br><br>
+            1. The main idea of the passage is: ....................................................<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;A. Choice 1 &nbsp;&nbsp;&nbsp;&nbsp; B. Choice 2 &nbsp;&nbsp;&nbsp;&nbsp; C. Choice 3
+          </div>
+        `;
+      } else if (qType === 'vocab') {
+        sectionTitle = `${qCounter}) Vocabulary`;
+        promptTitle = `Q${qCounter}: Fill in the blanks with suitable words:`;
+        innerContentHtml = `
+          <div id="${areaId}" class="q-body-content" style="height: 120px;">
+            <div class="word-bank-box" contenteditable="true">[ word1 — word2 — word3 — word4 ]</div>
+            <div contenteditable="true">
+              1. Sentence with missing word (........................).<br>
+              2. Another sentence with missing word (........................).
+            </div>
+          </div>
+        `;
+      } else if (qType === 'grammar') {
+        sectionTitle = `${qCounter}) Grammar`;
+        promptTitle = `Q${qCounter}: Choose the correct answer between brackets:`;
+        innerContentHtml = `
+          <div id="${areaId}" class="q-body-content" style="height: 110px;" contenteditable="true">
+            1. She ( <strong>A.</strong> go — <strong>B.</strong> goes — <strong>C.</strong> gone ) to school every morning.<br>
+            2. They have ( <strong>A.</strong> finish — <strong>B.</strong> finished — <strong>C.</strong> finishing ) their homework.
+          </div>
+        `;
+      } else if (qType === 'spelling') {
+        sectionTitle = `${qCounter}) Spelling / Orthography`;
+        promptTitle = `Q${qCounter}: Complete the missing letters:`;
+        innerContentHtml = `
+          <div id="${areaId}" class="q-body-content" style="height: 80px;" contenteditable="true">
+            1. te.....cher &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. frie.....d<br>
+            3. sch.....ol &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. st.....dent
+          </div>
+        `;
+      } else {
+        sectionTitle = `${qCounter}) Composition / Writing`;
+        promptTitle = `Q${qCounter}: Write a paragraph about:`;
+        innerContentHtml = `
+          <div id="${areaId}" class="q-body-content" style="height: 150px;" contenteditable="true">
+            ................................................................................................................................................<br>
+            ................................................................................................................................................<br>
+            ................................................................................................................................................
+          </div>
+        `;
+      }
+
+      box.innerHTML = `
+        <div class="expand-control-bar no-print">
+          <span>↔ Box Height:</span>
+          <input type="range" min="60" max="380" value="120" oninput="resizeBox('${areaId}', this.value, '${lblId}')">
+          <span class="px-label" id="${lblId}">120px</span>
+          <button class="btn-delete-q" onclick="deleteQuestion('${boxId}')">✕ Delete</button>
+        </div>
+
+        <div class="section-bar">
+          <div class="section-name" contenteditable="true">${sectionTitle}</div>
+          <div class="section-mark" id="${markLblId}" contenteditable="true">(4 Marks)</div>
+        </div>
+
+        <div class="q-prompt-wrap">
+          <div class="q-prompt" contenteditable="true">${promptTitle}</div>
+          <div class="score-badge" contenteditable="true" oninput="updateRubric('${qCounter}', this.innerText)">4</div>
+        </div>
+
+        ${innerContentHtml}
+
+        <table class="rubric-strip" id="${rubricId}">
+          <tr>
+            <th contenteditable="true">Q${qCounter} Mark</th>
+            <th>1</th><td contenteditable="true"></td>
+            <th>2</th><td contenteditable="true"></td>
+            <th>3</th><td contenteditable="true"></td>
+            <th>4</th><td contenteditable="true"></td>
+            <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 4</td>
+          </tr>
+        </table>
+      `;
+
+      targetWrapper.appendChild(box);
+      box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // رفع وتحميل الصور كـ Base64 لضمان ثباتها وحفظها وطباعتها
+    function loadQuestionImg(input, targetImgId) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const imgElem = document.getElementById(targetImgId);
+          if (imgElem) {
+            imgElem.src = e.target.result;
+          }
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    // رفع الشعار
+    function uploadLogo(input) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          document.getElementById('schoolLogo').src = e.target.result;
+          localStorage.setItem('english_exam_logo', e.target.result);
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    // الحفظ الكامل في الـ LocalStorage
+    function saveExamData() {
+      localStorage.setItem('english_exam_all_pages', document.getElementById('pagesContainer').innerHTML);
+      localStorage.setItem('english_exam_q_counter', qCounter);
+      alert('Exam template, all pages and images saved successfully!');
+    }
+
+    // الاسترجاع عند التحميل
+    window.onload = function() {
+      const savedLogo = localStorage.getItem('english_exam_logo');
+      if (savedLogo) {
+        document.getElementById('schoolLogo').src = savedLogo;
+      }
+      const savedPages = localStorage.getItem('english_exam_all_pages');
+      if (savedPages) {
+        document.getElementById('pagesContainer').innerHTML = savedPages;
+        const savedCounter = localStorage.getItem('english_exam_q_counter');
+        if (savedCounter) qCounter = parseInt(savedCounter);
+        updateAllPagesFooterAndDropdown();
+      }
+    };
+  </script>
+
+</body>
+</html>
