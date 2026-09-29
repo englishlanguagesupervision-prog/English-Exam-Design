@@ -26,7 +26,7 @@
       direction: ltr;
     }
 
-    /* الشريط العلوي */
+    /* الشريط العلوي العام */
     .top-toolbar {
       position: sticky;
       top: 0;
@@ -96,7 +96,7 @@
       outline: none;
     }
 
-    /* زر الواتساب */
+    /* زر الواتساب التفاعلي */
     .whatsapp-btn {
       background: #25D366;
       color: #ffffff;
@@ -189,7 +189,7 @@
       flex-direction: column;
     }
 
-    /* الترويسة */
+    /* الترويسة الإنجليزية */
     .header-top {
       display: flex;
       justify-content: space-between;
@@ -327,7 +327,7 @@
       flex-grow: 1;
     }
 
-    /* الأسئلة */
+    /* بطاقات الأسئلة */
     .questions-wrapper {
       display: flex;
       flex-direction: column;
@@ -394,10 +394,10 @@
     .expand-control-bar {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background-color: #1e293b;
       color: #fff;
-      padding: 2px 8px;
+      padding: 3px 8px;
       border-radius: 4px;
       font-size: 11px;
       font-weight: bold;
@@ -407,7 +407,7 @@
 
     .expand-control-bar input[type="range"] {
       flex: 1;
-      min-width: 80px;
+      min-width: 60px;
       accent-color: #c19a4b;
       cursor: pointer;
     }
@@ -425,93 +425,69 @@
       font-weight: bold;
     }
 
+    .btn-mini-tool {
+      background: #0e5c4d;
+      color: #fff;
+      border: 1px solid #7ea698;
+      padding: 2px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .btn-mini-tool:hover { background: #147a66; }
+
     .q-body-content {
       border: 1px solid #e2e8f0;
       background: #fafcfb;
       border-radius: 4px;
       padding: 6px;
       font-size: 12.5px;
-      line-height: 1.6;
+      line-height: 1.55;
       outline: none;
       min-height: 60px;
       overflow: hidden;
     }
 
-    /* معرض الصور المتعددة */
-    .images-grid-container {
-      display: flex;
-      gap: 12px;
-      width: 100%;
-      align-items: flex-start;
-      margin-bottom: 8px;
-    }
-
-    .images-grid-container.stacked {
-      flex-direction: column !important;
-      align-items: center !important;
-    }
-
-    .images-grid-container.side-by-side {
-      flex-direction: row !important;
-      justify-content: space-around !important;
-      flex-wrap: wrap !important;
-    }
-
-    .image-card-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      border: 1px dashed #cbd5e1;
-      padding: 6px;
-      background: #ffffff;
-      border-radius: 6px;
-    }
-
-    .image-card-item img {
-      max-height: 120px;
-      object-fit: contain;
-      border-radius: 4px;
-      border: 1px solid #94a3b8;
-      cursor: pointer;
-    }
-
-    .image-caption-input {
-      font-size: 11.5px;
-      font-weight: 700;
+    /* تنسيق الفقرات الفرعية (A و B و C) */
+    .sub-part-header {
+      font-weight: 800;
       color: #0e5c4d;
-      outline: none;
-      text-align: center;
-      width: 100%;
-    }
-
-    .btn-mini-control {
-      background: #334155;
-      color: #f8fafc;
-      border: 1px solid #64748b;
+      margin-top: 6px;
+      margin-bottom: 3px;
+      background: #eef7f4;
       padding: 2px 6px;
       border-radius: 3px;
-      font-size: 10px;
-      cursor: pointer;
-      font-weight: bold;
+      border-left: 3px solid #0e5c4d;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .btn-mini-control:hover { background: #475569; }
-
-    /* بنك الكلمات والصناديق التعليمية */
-    .word-bank-box {
-      border: 1.5px dashed #0e5c4d;
-      background: #f0fdf4;
-      padding: 4px 10px;
-      text-align: center;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      border-radius: 5px;
-      margin-bottom: 6px;
-      color: #064e3b;
+    .tf-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2px 0;
     }
 
-    /* أشرطة الرصد والدرجات - من اليسار تماماً */
+    .tf-box {
+      font-weight: 800;
+      color: #475569;
+      min-width: 60px;
+      text-align: right;
+    }
+
+    .answer-line-box {
+      margin-top: 2px;
+      margin-bottom: 5px;
+      color: #334155;
+    }
+
+    /* أشرطة الرصد والدرجات من اليسار تماماً */
     .rubric-strip {
       border-collapse: collapse;
       font-size: 10.5px;
@@ -583,16 +559,14 @@
         <option value="primary">🎒 Primary Stage (We Can)</option>
       </select>
 
-      <!-- اختيار الصفحة المستهدفة -->
       <select id="targetPageSelect" class="select-tool">
         <option value="page1_wrapper">Page 1</option>
         <option value="page2_wrapper">Page 2</option>
       </select>
 
-      <!-- اختيار نوع السؤال مع ميزة الصور المتعددة -->
+      <!-- قائمة المهارات -->
       <select id="questionTypeSelect" class="select-tool">
-        <option value="reading">📖 Reading Comprehension</option>
-        <option value="multi-image">🖼️ Multi-Images (Side-by-side / Stacked)</option>
+        <option value="reading_all">📖 Reading Comprehension (Wh- + MCQ + T/F)</option>
         <option value="vocab">🔤 Vocabulary (Word Box)</option>
         <option value="grammar">⚙️ Grammar (MCQ)</option>
         <option value="spelling">✍️ Spelling / Missing Letters</option>
@@ -608,7 +582,7 @@
       <input type="file" id="logoUploader" accept="image/*" style="display:none;" onchange="uploadLogo(this)">
     </div>
 
-    <!-- زر واتساب التفاعلي -->
+    <!-- زر واتساب التفاعلي السريع -->
     <div class="toolbar-right">
       <a href="https://wa.me/966530665625" target="_blank" class="whatsapp-btn" title="Contact on WhatsApp">
         <svg viewBox="0 0 24 24">
@@ -619,7 +593,7 @@
     </div>
   </div>
 
-  <!-- حاوية كافة الصفحات -->
+  <!-- حاوية الصفحات -->
   <div id="pagesContainer">
 
     <!-- ======================== PAGE 1 ======================== -->
@@ -687,31 +661,64 @@
             <!-- أسئلة الصفحة 1 -->
             <div id="page1_wrapper" class="questions-wrapper">
               
-              <!-- Q1: Reading -->
+              <!-- Q1: سؤال القطعة الشامل لـ (كتابة إجابة + اختيارات + صح وخطأ) -->
               <div class="question-box" id="q_box_1">
                 <div class="expand-control-bar no-print">
-                  <span>↔ Box Height:</span>
-                  <input type="range" min="120" max="420" value="230" oninput="resizeBox('q_area_1', this.value, 'px_lbl_1')">
-                  <span class="px-label" id="px_lbl_1">230px</span>
+                  <span>↔ Height:</span>
+                  <input type="range" min="150" max="520" value="310" oninput="resizeBox('q_area_1', this.value, 'px_lbl_1')">
+                  <span class="px-label" id="px_lbl_1">310px</span>
+                  <button class="btn-mini-tool" onclick="appendSubPart('q_area_1', 'wh')">➕ Add Part (Wh- Answer)</button>
+                  <button class="btn-mini-tool" onclick="appendSubPart('q_area_1', 'mcq')">➕ Add Part (MCQ)</button>
+                  <button class="btn-mini-tool" onclick="appendSubPart('q_area_1', 'tf')">➕ Add Part (T/F)</button>
                   <button class="btn-delete-q" onclick="deleteQuestion('q_box_1')">✕ Delete</button>
                 </div>
 
                 <div class="section-bar">
                   <div class="section-name" contenteditable="true">1) Reading Comprehension</div>
-                  <div class="section-mark" id="q_mark_lbl_1" contenteditable="true">(4 Marks)</div>
+                  <div class="section-mark" id="q_mark_lbl_1" contenteditable="true">(6 Marks)</div>
                 </div>
 
                 <div class="q-prompt-wrap">
-                  <div class="q-prompt" contenteditable="true">Q1: Read the text and choose the best answer to each question:</div>
-                  <div class="score-badge" contenteditable="true" oninput="updateRubric('1', this.innerText)">4</div>
+                  <div class="q-prompt" contenteditable="true">Q1: Read the passage, then answer the questions below:</div>
+                  <div class="score-badge" contenteditable="true" oninput="updateRubric('1', this.innerText)">6</div>
                 </div>
 
-                <div id="q_area_1" class="q-body-content" style="height: 230px;" contenteditable="true">
-                  <strong>Honeybees and Flowers:</strong> Honeybees and flowers are two species that share a symbiotic relationship. Honeybees eat the nectar and pollen made by flowers to survive and grow. When flower pollen is spread to another flower, the new flower can make seeds (pollination). Because flowers need honeybees, they come in bright colors and sweet smells.<br><br>
-                  1. How do flowers attract bees?<br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;A. They shoot pollen &nbsp;&nbsp;&nbsp;&nbsp; B. They are colorful with sweet smell<br>
-                  2. Honeybees and flowers share a .................... relationship.<br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;A. symbiotic &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; B. symbolic
+                <div id="q_area_1" class="q-body-content" style="height: 310px;" contenteditable="true">
+                  <div style="background:#f8fafc; border:1px solid #e2e8f0; padding:6px; border-radius:4px; margin-bottom:6px;">
+                    <strong>Honeybees and Flowers:</strong> Honeybees and flowers share a mutual symbiotic relationship. Honeybees eat nectar and pollen from flowers to make honey and feed the hive. Since flowers bloom in the springtime, this is the season that most bees are born. In return, flowers rely on bees to spread pollen so they can reproduce.
+                  </div>
+
+                  <!-- فقرة A: أسئلة مقالية يكتب الطالب إجابتها بنفسه من القطعة -->
+                  <div class="sub-part-header">
+                    <span>A) Answer the following questions from the text:</span>
+                    <span style="font-size:11px; font-weight:normal;">(2 Marks)</span>
+                  </div>
+                  1. Why do honeybees need nectar and pollen?<br>
+                  <div class="answer-line-box">Ans: ................................................................................................................................................</div>
+                  2. In which season are most honeybees born?<br>
+                  <div class="answer-line-box">Ans: ................................................................................................................................................</div>
+
+                  <!-- فقرة B: اختيارات -->
+                  <div class="sub-part-header">
+                    <span>B) Choose the correct answer:</span>
+                    <span style="font-size:11px; font-weight:normal;">(2 Marks)</span>
+                  </div>
+                  1. Flowers rely on bees to spread their ....................<br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;[ <strong>A.</strong> pollen &nbsp;&nbsp;&nbsp;&nbsp; <strong>B.</strong> seeds &nbsp;&nbsp;&nbsp;&nbsp; <strong>C.</strong> leaves ]<br>
+
+                  <!-- فقرة C: صح أو خطأ -->
+                  <div class="sub-part-header">
+                    <span>C) Put (✔) for True or (✖) for False:</span>
+                    <span style="font-size:11px; font-weight:normal;">(2 Marks)</span>
+                  </div>
+                  <div class="tf-row">
+                    <span>1. Bees and flowers can easily survive without each other.</span>
+                    <span class="tf-box">( &nbsp;&nbsp;&nbsp;&nbsp; )</span>
+                  </div>
+                  <div class="tf-row">
+                    <span>2. Honeybees store honey inside their hives.</span>
+                    <span class="tf-box">( &nbsp;&nbsp;&nbsp;&nbsp; )</span>
+                  </div>
                 </div>
 
                 <table class="rubric-strip" id="rubric_table_1">
@@ -721,7 +728,9 @@
                     <th>2</th><td contenteditable="true"></td>
                     <th>3</th><td contenteditable="true"></td>
                     <th>4</th><td contenteditable="true"></td>
-                    <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 4</td>
+                    <th>5</th><td contenteditable="true"></td>
+                    <th>6</th><td contenteditable="true"></td>
+                    <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 6</td>
                   </tr>
                 </table>
               </div>
@@ -729,7 +738,7 @@
               <!-- Q2: Spelling -->
               <div class="question-box" id="q_box_2">
                 <div class="expand-control-bar no-print">
-                  <span>↔ Box Height:</span>
+                  <span>↔ Height:</span>
                   <input type="range" min="50" max="250" value="75" oninput="resizeBox('q_area_2', this.value, 'px_lbl_2')">
                   <span class="px-label" id="px_lbl_2">75px</span>
                   <button class="btn-delete-q" onclick="deleteQuestion('q_box_2')">✕ Delete</button>
@@ -790,7 +799,7 @@
               <!-- Q3: Vocabulary -->
               <div class="question-box" id="q_box_3">
                 <div class="expand-control-bar no-print">
-                  <span>↔ Box Height:</span>
+                  <span>↔ Height:</span>
                   <input type="range" min="80" max="300" value="115" oninput="resizeBox('q_area_3', this.value, 'px_lbl_3')">
                   <span class="px-label" id="px_lbl_3">115px</span>
                   <button class="btn-delete-q" onclick="deleteQuestion('q_box_3')">✕ Delete</button>
@@ -807,7 +816,7 @@
                 </div>
 
                 <div id="q_area_3" class="q-body-content" style="height: 115px;">
-                  <div class="word-bank-box" contenteditable="true">[ compensate — invaluable — devoted — predators ]</div>
+                  <div style="border:1.5px dashed #0e5c4d; background:#f0fdf4; padding:4px 10px; text-align:center; font-weight:700; border-radius:5px; margin-bottom:6px; color:#064e3b;" contenteditable="true">[ compensate — invaluable — devoted — predators ]</div>
                   <div contenteditable="true">
                     1. Lions are thought to be one of the most dangerous (........................) on Earth.<br>
                     2. To (........................) for poor eyesight, zebras have excellent hearing.
@@ -829,7 +838,7 @@
               <!-- Q4: Grammar -->
               <div class="question-box" id="q_box_4">
                 <div class="expand-control-bar no-print">
-                  <span>↔ Box Height:</span>
+                  <span>↔ Height:</span>
                   <input type="range" min="80" max="300" value="115" oninput="resizeBox('q_area_4', this.value, 'px_lbl_4')">
                   <span class="px-label" id="px_lbl_4">115px</span>
                   <button class="btn-delete-q" onclick="deleteQuestion('q_box_4')">✕ Delete</button>
@@ -865,38 +874,37 @@
               <!-- Q5: Writing -->
               <div class="question-box" id="q_box_5">
                 <div class="expand-control-bar no-print">
-                  <span>↔ Box Height:</span>
-                  <input type="range" min="100" max="380" value="170" oninput="resizeBox('q_area_5', this.value, 'px_lbl_5')">
-                  <span class="px-label" id="px_lbl_5">170px</span>
+                  <span>↔ Height:</span>
+                  <input type="range" min="100" max="380" value="150" oninput="resizeBox('q_area_5', this.value, 'px_lbl_5')">
+                  <span class="px-label" id="px_lbl_5">150px</span>
                   <button class="btn-delete-q" onclick="deleteQuestion('q_box_5')">✕ Delete</button>
                 </div>
 
                 <div class="section-bar">
                   <div class="section-name" contenteditable="true">5) Writing / Composition</div>
-                  <div class="section-mark" id="q_mark_lbl_5" contenteditable="true">(6 Marks)</div>
+                  <div class="section-mark" id="q_mark_lbl_5" contenteditable="true">(4 Marks)</div>
                 </div>
 
                 <div class="q-prompt-wrap">
                   <div class="q-prompt" contenteditable="true">Q5: Write a well-developed paragraph about: "Your Favourite Hobby"</div>
-                  <div class="score-badge" contenteditable="true">6</div>
+                  <div class="score-badge" contenteditable="true">4</div>
                 </div>
 
-                <div id="q_area_5" class="q-body-content" style="height: 170px;" contenteditable="true">
+                <div id="q_area_5" class="q-body-content" style="height: 150px;" contenteditable="true">
                   ................................................................................................................................................<br>
                   ................................................................................................................................................<br>
                   ................................................................................................................................................<br>
                   ................................................................................................................................................
                 </div>
 
-                <!-- جدول تصحيح التعبير محاذى بالكامل لليسار -->
                 <table class="rubric-strip" id="rubric_table_5">
                   <tr>
                     <th>Criteria</th>
-                    <th>Ideas (2)</th><td contenteditable="true"></td>
-                    <th>Grammar (1.5)</th><td contenteditable="true"></td>
-                    <th>Spelling (1.5)</th><td contenteditable="true"></td>
-                    <th>Punctuation (1)</th><td contenteditable="true"></td>
-                    <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 6</td>
+                    <th>Ideas (1.5)</th><td contenteditable="true"></td>
+                    <th>Grammar (1)</th><td contenteditable="true"></td>
+                    <th>Spelling (1)</th><td contenteditable="true"></td>
+                    <th>Punctuation (0.5)</th><td contenteditable="true"></td>
+                    <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 4</td>
                   </tr>
                 </table>
               </div>
@@ -924,9 +932,55 @@
 
   <script>
     let qCounter = 5;
-    let imgItemCounter = 100;
 
-    // إضافة صفحة جديدة ديناميكياً (صفحة 3 أو 4 أو أكثر)
+    // إضافة فقرة فرعية (إجابة مقالية من القطعة أو MCQ أو صح وخطأ)
+    function appendSubPart(areaId, type) {
+      const area = document.getElementById(areaId);
+      if (!area) return;
+
+      if (type === 'wh') {
+        const part = document.createElement('div');
+        part.innerHTML = `
+          <div class="sub-part-header">
+            <span>Answer the following question(s) from the text:</span>
+            <span style="font-size:11px; font-weight:normal;">(Marks)</span>
+          </div>
+          1. Write your question here (e.g. Why / What / Where / How) ....................?<br>
+          <div class="answer-line-box">Ans: ................................................................................................................................................</div>
+        `;
+        area.appendChild(part);
+      } else if (type === 'mcq') {
+        const part = document.createElement('div');
+        part.innerHTML = `
+          <div class="sub-part-header">
+            <span>Choose the correct answer:</span>
+            <span style="font-size:11px; font-weight:normal;">(Marks)</span>
+          </div>
+          1. Sentence or prompt goes here ....................<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;[ <strong>A.</strong> Option 1 &nbsp;&nbsp;&nbsp;&nbsp; <strong>B.</strong> Option 2 &nbsp;&nbsp;&nbsp;&nbsp; <strong>C.</strong> Option 3 ]<br>
+        `;
+        area.appendChild(part);
+      } else if (type === 'tf') {
+        const part = document.createElement('div');
+        part.innerHTML = `
+          <div class="sub-part-header">
+            <span>Put (✔) for True or (✖) for False:</span>
+            <span style="font-size:11px; font-weight:normal;">(Marks)</span>
+          </div>
+          <div class="tf-row">
+            <span>1. Sentence statement goes here...</span>
+            <span class="tf-box">( &nbsp;&nbsp;&nbsp;&nbsp; )</span>
+          </div>
+          <div class="tf-row">
+            <span>2. Another statement sentence...</span>
+            <span class="tf-box">( &nbsp;&nbsp;&nbsp;&nbsp; )</span>
+          </div>
+        `;
+        area.appendChild(part);
+      }
+    }
+
+    // إضافة صفحة جديدة
     function addNewExamPage() {
       const pages = document.querySelectorAll('.page');
       const newPageNum = pages.length + 1;
@@ -974,13 +1028,13 @@
         alert('Cannot remove the first page!');
         return;
       }
-      if (confirm(`Are you sure you want to remove Page ${pages.length}? All its questions will be deleted.`)) {
+      if (confirm(`Are you sure you want to remove Page ${pages.length}?`)) {
         pages[pages.length - 1].remove();
         updateAllPagesFooterAndDropdown();
       }
     }
 
-    // تحديث أرقام الصفحات والتذييل والقائمة المنسدلة
+    // تحديث أرقام الصفحات
     function updateAllPagesFooterAndDropdown() {
       const pages = document.querySelectorAll('.page');
       const totalPages = pages.length;
@@ -995,13 +1049,11 @@
         const wrapper = page.querySelector('.questions-wrapper');
         if (wrapper) wrapper.id = `page${pageIdx}_wrapper`;
 
-        // إضافة خيار في القائمة
         const opt = document.createElement('option');
         opt.value = `page${pageIdx}_wrapper`;
         opt.innerText = `Page ${pageIdx}`;
         targetSelect.appendChild(opt);
 
-        // ضبط التذييل
         const pageNumTag = page.querySelector('.page-num-tag');
         const followTag = page.querySelector('.page-follow-tag');
 
@@ -1028,49 +1080,6 @@
       if (document.querySelector(`option[value="${currentSelected}"]`)) {
         targetSelect.value = currentSelected;
       }
-    }
-
-    // تبديل تخطيط الصور (بجوار بعض أو تحت بعض)
-    function toggleImageLayout(containerId, mode) {
-      const container = document.getElementById(containerId);
-      if (!container) return;
-      if (mode === 'stacked') {
-        container.classList.remove('side-by-side');
-        container.classList.add('stacked');
-      } else {
-        container.classList.remove('stacked');
-        container.classList.add('side-by-side');
-      }
-    }
-
-    // تكبير وتصغير الصور
-    function resizeImages(containerId, maxH) {
-      const container = document.getElementById(containerId);
-      if (!container) return;
-      const imgs = container.querySelectorAll('img');
-      imgs.forEach(img => {
-        img.style.maxHeight = maxH + 'px';
-      });
-    }
-
-    // إضافة بطاقة صورة إضافية في نفس السؤال
-    function addImageCard(containerId) {
-      imgItemCounter++;
-      const container = document.getElementById(containerId);
-      if (!container) return;
-
-      const fileInputId = `file_add_${imgItemCounter}`;
-      const imgPreviewId = `img_add_${imgItemCounter}`;
-
-      const card = document.createElement('div');
-      card.className = 'image-card-item';
-      card.innerHTML = `
-        <img id="${imgPreviewId}" src="https://via.placeholder.com/140x110?text=Click+to+Upload" title="Click to upload" onclick="document.getElementById('${fileInputId}').click();">
-        <input type="file" id="${fileInputId}" accept="image/*" style="display:none;" onchange="loadQuestionImg(this, '${imgPreviewId}')">
-        <div class="image-caption-input" contenteditable="true">Picture ${container.children.length + 1}</div>
-        <button class="btn-delete-q no-print" onclick="this.parentElement.remove()">✕</button>
-      `;
-      container.appendChild(card);
     }
 
     // تبديل المرحلة
@@ -1122,7 +1131,7 @@
       }
     }
 
-    // تحديث شريط درجات السؤال ديناميكياً
+    // تحديث شريط درجات السؤال
     function updateRubric(qNum, valueText) {
       const cleanVal = parseInt(valueText.trim());
       const rubricTable = document.getElementById(`rubric_table_${qNum}`);
@@ -1160,58 +1169,44 @@
       const lblId = `px_lbl_${qCounter}`;
       const rubricId = `rubric_table_${qCounter}`;
       const markLblId = `q_mark_lbl_${qCounter}`;
-      const gridId = `grid_img_${qCounter}`;
 
       const box = document.createElement('div');
       box.className = 'question-box';
       box.id = boxId;
 
-      let sectionTitle = `${qCounter}) General Question`;
-      let promptTitle = `Q${qCounter}: Answer the following question:`;
+      let sectionTitle = `${qCounter}) Reading Comprehension`;
+      let promptTitle = `Q${qCounter}: Read the passage and answer the questions:`;
       let innerContentHtml = '';
 
-      if (qType === 'multi-image') {
-        sectionTitle = `${qCounter}) Observation and Analysis (Pictures)`;
-        promptTitle = `Q${qCounter}: Look at the picture(s) and answer the questions below:`;
+      if (qType === 'reading_all') {
         innerContentHtml = `
-          <div style="background:#f1f5f9; padding:4px 8px; border-radius:4px; margin-bottom:6px; display:flex; gap:8px; align-items:center;" class="no-print">
-            <span style="font-size:11px; font-weight:bold;">Layout:</span>
-            <button class="btn-mini-control" onclick="toggleImageLayout('${gridId}', 'side-by-side')">↔ Side by Side</button>
-            <button class="btn-mini-control" onclick="toggleImageLayout('${gridId}', 'stacked')">↕ Stacked (Under)</button>
-            <button class="btn-mini-control" onclick="addImageCard('${gridId}')">➕ Add Another Image</button>
-            <span style="font-size:11px; margin-left:auto;">Image Size:</span>
-            <input type="range" min="60" max="220" value="120" oninput="resizeImages('${gridId}', this.value)" style="width:80px;">
-          </div>
-
-          <div id="${gridId}" class="images-grid-container side-by-side">
-            <div class="image-card-item">
-              <img id="img_preview_${qCounter}_1" src="https://via.placeholder.com/140x110?text=Click+to+Upload" title="Click to upload" onclick="document.getElementById('file_input_${qCounter}_1').click();">
-              <input type="file" id="file_input_${qCounter}_1" accept="image/*" style="display:none;" onchange="loadQuestionImg(this, 'img_preview_${qCounter}_1')">
-              <div class="image-caption-input" contenteditable="true">Picture A</div>
-              <button class="btn-delete-q no-print" onclick="this.parentElement.remove()">✕</button>
+          <div id="${areaId}" class="q-body-content" style="height: 280px;" contenteditable="true">
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; padding:6px; border-radius:4px; margin-bottom:6px;">
+              <strong>Passage:</strong> Insert your reading comprehension text here...
             </div>
 
-            <div class="image-card-item">
-              <img id="img_preview_${qCounter}_2" src="https://via.placeholder.com/140x110?text=Click+to+Upload" title="Click to upload" onclick="document.getElementById('file_input_${qCounter}_2').click();">
-              <input type="file" id="file_input_${qCounter}_2" accept="image/*" style="display:none;" onchange="loadQuestionImg(this, 'img_preview_${qCounter}_2')">
-              <div class="image-caption-input" contenteditable="true">Picture B</div>
-              <button class="btn-delete-q no-print" onclick="this.parentElement.remove()">✕</button>
+            <div class="sub-part-header">
+              <span>A) Answer the following questions from the text:</span>
+              <span style="font-size:11px; font-weight:normal;">(Marks)</span>
             </div>
-          </div>
+            1. Write question sentence here ....................?<br>
+            <div class="answer-line-box">Ans: ................................................................................................................................................</div>
 
-          <div id="${areaId}" class="q-body-content" style="height: 120px;" contenteditable="true">
-            1. Describe the difference between Picture A and Picture B: ....................................................<br><br>
-            2. What do both pictures have in common? .....................................................................................
-          </div>
-        `;
-      } else if (qType === 'reading') {
-        sectionTitle = `${qCounter}) Reading Comprehension`;
-        promptTitle = `Q${qCounter}: Read the text and choose the correct answer:`;
-        innerContentHtml = `
-          <div id="${areaId}" class="q-body-content" style="height: 180px;" contenteditable="true">
-            <strong>Passage:</strong> Insert short comprehension passage here...<br><br>
-            1. The main idea of the passage is: ....................................................<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;A. Choice 1 &nbsp;&nbsp;&nbsp;&nbsp; B. Choice 2 &nbsp;&nbsp;&nbsp;&nbsp; C. Choice 3
+            <div class="sub-part-header">
+              <span>B) Choose the correct answer:</span>
+              <span style="font-size:11px; font-weight:normal;">(Marks)</span>
+            </div>
+            1. Question sentence prompt goes here ....................<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;[ <strong>A.</strong> Choice 1 &nbsp;&nbsp;&nbsp;&nbsp; <strong>B.</strong> Choice 2 &nbsp;&nbsp;&nbsp;&nbsp; <strong>C.</strong> Choice 3 ]<br>
+
+            <div class="sub-part-header">
+              <span>C) Put (✔) for True or (✖) for False:</span>
+              <span style="font-size:11px; font-weight:normal;">(Marks)</span>
+            </div>
+            <div class="tf-row">
+              <span>1. Write True/False sentence here...</span>
+              <span class="tf-box">( &nbsp;&nbsp;&nbsp;&nbsp; )</span>
+            </div>
           </div>
         `;
       } else if (qType === 'vocab') {
@@ -1219,7 +1214,7 @@
         promptTitle = `Q${qCounter}: Fill in the blanks with suitable words:`;
         innerContentHtml = `
           <div id="${areaId}" class="q-body-content" style="height: 120px;">
-            <div class="word-bank-box" contenteditable="true">[ word1 — word2 — word3 — word4 ]</div>
+            <div style="border:1.5px dashed #0e5c4d; background:#f0fdf4; padding:4px 10px; text-align:center; font-weight:700; border-radius:5px; margin-bottom:6px; color:#064e3b;" contenteditable="true">[ word1 — word2 — word3 — word4 ]</div>
             <div contenteditable="true">
               1. Sentence with missing word (........................).<br>
               2. Another sentence with missing word (........................).
@@ -1258,9 +1253,12 @@
 
       box.innerHTML = `
         <div class="expand-control-bar no-print">
-          <span>↔ Box Height:</span>
-          <input type="range" min="60" max="380" value="120" oninput="resizeBox('${areaId}', this.value, '${lblId}')">
-          <span class="px-label" id="${lblId}">120px</span>
+          <span>↔ Height:</span>
+          <input type="range" min="60" max="420" value="130" oninput="resizeBox('${areaId}', this.value, '${lblId}')">
+          <span class="px-label" id="${lblId}">130px</span>
+          <button class="btn-mini-tool" onclick="appendSubPart('${areaId}', 'wh')">➕ Add Part (Wh- Answer)</button>
+          <button class="btn-mini-tool" onclick="appendSubPart('${areaId}', 'mcq')">➕ Add Part (MCQ)</button>
+          <button class="btn-mini-tool" onclick="appendSubPart('${areaId}', 'tf')">➕ Add Part (T/F)</button>
           <button class="btn-delete-q" onclick="deleteQuestion('${boxId}')">✕ Delete</button>
         </div>
 
@@ -1292,20 +1290,6 @@
       box.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
-    // رفع وتحميل الصور كـ Base64 لضمان ثباتها وحفظها وطباعتها
-    function loadQuestionImg(input, targetImgId) {
-      if (input.files && input.files[0]) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          const imgElem = document.getElementById(targetImgId);
-          if (imgElem) {
-            imgElem.src = e.target.result;
-          }
-        };
-        reader.readAsDataURL(input.files[0]);
-      }
-    }
-
     // رفع الشعار
     function uploadLogo(input) {
       if (input.files && input.files[0]) {
@@ -1318,14 +1302,13 @@
       }
     }
 
-    // الحفظ الكامل في الـ LocalStorage
+    // حفظ واسترجاع
     function saveExamData() {
       localStorage.setItem('english_exam_all_pages', document.getElementById('pagesContainer').innerHTML);
       localStorage.setItem('english_exam_q_counter', qCounter);
-      alert('Exam template, all pages and images saved successfully!');
+      alert('Exam template, questions, and parts saved successfully!');
     }
 
-    // الاسترجاع عند التحميل
     window.onload = function() {
       const savedLogo = localStorage.getItem('english_exam_logo');
       if (savedLogo) {
