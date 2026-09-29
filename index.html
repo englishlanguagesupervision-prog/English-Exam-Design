@@ -26,7 +26,7 @@
       direction: ltr;
     }
 
-    /* الشريط العلوي العام */
+    /* الشريط العلوي */
     .top-toolbar {
       position: sticky;
       top: 0;
@@ -69,10 +69,13 @@
       transform: translateY(-1px);
     }
 
-    .btn-danger {
-      background: #ef4444 !important;
-      border-color: #dc2626 !important;
+    .btn-danger-clear {
+      background: #dc2626 !important;
       color: #ffffff !important;
+      border: 1px solid #b91c1c !important;
+    }
+    .btn-danger-clear:hover {
+      background: #991b1b !important;
     }
 
     .btn-print-main {
@@ -96,7 +99,6 @@
       outline: none;
     }
 
-    /* زر الواتساب التفاعلي */
     .whatsapp-btn {
       background: #25D366;
       color: #ffffff;
@@ -116,7 +118,6 @@
     .whatsapp-btn:hover {
       background: #20bd5a;
       transform: translateY(-1px);
-      box-shadow: 0 4px 10px rgba(37,211,102,0.4);
     }
 
     .whatsapp-btn svg {
@@ -156,8 +157,6 @@
       img {
         display: block !important;
         max-width: 100% !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
       }
       [contenteditable="true"] {
         outline: none !important;
@@ -189,7 +188,7 @@
       flex-direction: column;
     }
 
-    /* الترويسة الإنجليزية */
+    /* الترويسة */
     .header-top {
       display: flex;
       justify-content: space-between;
@@ -327,7 +326,7 @@
       flex-grow: 1;
     }
 
-    /* بطاقات الأسئلة */
+    /* الأسئلة */
     .questions-wrapper {
       display: flex;
       flex-direction: column;
@@ -405,15 +404,6 @@
       flex-wrap: wrap;
     }
 
-    .expand-control-bar input[type="range"] {
-      flex: 1;
-      min-width: 60px;
-      accent-color: #c19a4b;
-      cursor: pointer;
-    }
-
-    .px-label { color: #facc15; font-weight: 800; min-width: 36px; }
-
     .btn-delete-q {
       background: #ef4444;
       color: #fff;
@@ -424,21 +414,6 @@
       font-size: 10px;
       font-weight: bold;
     }
-
-    .btn-mini-tool {
-      background: #0e5c4d;
-      color: #fff;
-      border: 1px solid #7ea698;
-      padding: 2px 6px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 10px;
-      font-weight: bold;
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-    }
-    .btn-mini-tool:hover { background: #147a66; }
 
     .q-body-content {
       border: 1px solid #e2e8f0;
@@ -452,42 +427,46 @@
       overflow: hidden;
     }
 
-    /* تنسيق الفقرات الفرعية (A و B و C) */
-    .sub-part-header {
+    /* سؤال الخط بالأسطر الأربعة */
+    .handwriting-box {
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 10px 14px;
+      background: #ffffff;
+      margin: 4px 0 6px 0;
+    }
+
+    .handwriting-sample-text {
+      font-size: 15px;
       font-weight: 800;
       color: #0e5c4d;
-      margin-top: 6px;
-      margin-bottom: 3px;
-      background: #eef7f4;
-      padding: 2px 6px;
-      border-radius: 3px;
-      border-left: 3px solid #0e5c4d;
+      margin-bottom: 12px;
+      outline: none;
+    }
+
+    .four-lines-container {
+      width: 100%;
+      height: 54px;
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
-      align-items: center;
+      position: relative;
+      margin-bottom: 4px;
     }
 
-    .tf-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 2px 0;
+    .four-line-red {
+      height: 1.5px;
+      background-color: #ef4444;
+      width: 100%;
     }
 
-    .tf-box {
-      font-weight: 800;
-      color: #475569;
-      min-width: 60px;
-      text-align: right;
+    .four-line-blue-dashed {
+      border-top: 1.5px dashed #3b82f6;
+      width: 100%;
+      height: 0;
     }
 
-    .answer-line-box {
-      margin-top: 2px;
-      margin-bottom: 5px;
-      color: #334155;
-    }
-
-    /* أشرطة الرصد والدرجات من اليسار تماماً */
+    /* أشرطة الرصد والدرجات */
     .rubric-strip {
       border-collapse: collapse;
       font-size: 10.5px;
@@ -552,37 +531,47 @@
   <!-- شريط التحكم العلوي -->
   <div class="top-toolbar no-print">
     <div class="toolbar-left">
-      <!-- اختيار المرحلة -->
+      <button class="btn-action btn-danger-clear" onclick="clearAllTemplateData()" title="Clear all and reset">🧹 Clear All Data</button>
+
+      <!-- قائمة المناهج متضمنة Pioneer للمتوسطة -->
       <select id="stageSelect" class="select-tool" onchange="changeStage(this.value)">
-        <option value="secondary" selected>🎓 Secondary Stage (Mega Goal)</option>
-        <option value="intermediate">🏫 Intermediate Stage (Super Goal)</option>
-        <option value="primary">🎒 Primary Stage (We Can)</option>
+        <optgroup label="Primary Stage (المرحلة الابتدائية)">
+          <option value="top_goal" selected>🌟 Top Goal (Primary)</option>
+          <option value="top_stars">⭐ Top Stars (Primary)</option>
+          <option value="we_can">🎒 We Can (Primary)</option>
+        </optgroup>
+        <optgroup label="Intermediate Stage (المرحلة المتوسطة)">
+          <option value="pioneer">🧭 Pioneer (Intermediate)</option>
+          <option value="super_goal">🏫 Super Goal (Intermediate)</option>
+        </optgroup>
+        <optgroup label="Secondary Stage (المرحلة الثانوية)">
+          <option value="mega_goal">🎓 Mega Goal (Secondary)</option>
+        </optgroup>
       </select>
 
       <select id="targetPageSelect" class="select-tool">
         <option value="page1_wrapper">Page 1</option>
-        <option value="page2_wrapper">Page 2</option>
       </select>
 
-      <!-- قائمة المهارات -->
       <select id="questionTypeSelect" class="select-tool">
-        <option value="reading_all">📖 Reading Comprehension (Wh- + MCQ + T/F)</option>
+        <option value="handwriting">✍️ E) Handwriting (4-Lines / Copying)</option>
+        <option value="reading_split">📖 Reading Comprehension (Passage + Parts)</option>
         <option value="vocab">🔤 Vocabulary (Word Box)</option>
         <option value="grammar">⚙️ Grammar (MCQ)</option>
-        <option value="spelling">✍️ Spelling / Missing Letters</option>
-        <option value="composition">📝 Guided / Free Composition</option>
+        <option value="spelling">🔠 Spelling / Missing Letters</option>
+        <option value="composition">📝 Composition / Writing</option>
       </select>
 
       <button class="btn-action" onclick="addNewEnglishQuestion()">➕ Add Question</button>
       <button class="btn-action" onclick="addNewExamPage()">📄 ➕ Add Page</button>
-      <button class="btn-action btn-danger" onclick="removeLastExamPage()">📄 ✖ Remove Page</button>
+      <button class="btn-action" onclick="removeLastExamPage()">📄 ✖ Remove Page</button>
       <button class="btn-action" onclick="document.getElementById('logoUploader').click();">📷 Logo</button>
       <button class="btn-action" onclick="saveExamData();">💾 Save</button>
       <button class="btn-action btn-print-main" onclick="window.print();">🖨️ Print (A4)</button>
       <input type="file" id="logoUploader" accept="image/*" style="display:none;" onchange="uploadLogo(this)">
     </div>
 
-    <!-- زر واتساب التفاعلي السريع -->
+    <!-- زر واتساب -->
     <div class="toolbar-right">
       <a href="https://wa.me/966530665625" target="_blank" class="whatsapp-btn" title="Contact on WhatsApp">
         <svg viewBox="0 0 24 24">
@@ -593,7 +582,6 @@
     </div>
   </div>
 
-  <!-- حاوية الصفحات -->
   <div id="pagesContainer">
 
     <!-- ======================== PAGE 1 ======================== -->
@@ -602,19 +590,18 @@
         <div class="inner-border">
           
           <div class="main-body">
-            <!-- الترويسة -->
             <div>
               <div class="header-top">
                 <div class="header-col left-side" id="headerEnglishSide">
                   Kingdom of Saudi Arabia<br>
                   Ministry of Education<br>
                   Al-Bayariq Private Schools<br>
-                  <span class="sub-dep" id="stageEnglishText">High Secondary Section</span>
+                  <span class="sub-dep" id="stageEnglishText">Elementary Section</span>
                 </div>
                 
                 <div class="header-col center">
                   <div class="logo-container" onclick="document.getElementById('logoUploader').click();" title="Click to upload logo">
-                    <img id="schoolLogo" src="d4b18761-7549-4fc4-b88b-8a2fe8b8084b.png" alt="Bayariq Logo" onerror="this.src='https://i.ibb.co/3W6qWqf/bayariq-logo.png'">
+                    <img id="schoolLogo" src="d4b18761-7549-4fc4-b88b-8a2fe8b8084b.png" alt="School Logo" onerror="this.src='https://via.placeholder.com/130x65?text=School+Logo'">
                   </div>
                 </div>
 
@@ -622,18 +609,17 @@
                   المملكة العربية السعودية<br>
                   وزارة التعليم<br>
                   مدارس البيارق الأهلية<br>
-                  <span class="sub-dep" id="stageArabicText">القسم الثانوي</span>
+                  <span class="sub-dep" id="stageArabicText">القسم الابتدائي (بنين)</span>
                 </div>
               </div>
 
               <div class="divider-line"></div>
 
               <div class="exam-title-box">
-                <div class="exam-title" id="examTitle" contenteditable="true">First Period Exam (1st Term)</div>
-                <div class="exam-subtitle" id="examSubtitle" contenteditable="true">Grade 12 / 3rd Secondary — Mega Goal 3</div>
+                <div class="exam-title" id="examTitle" contenteditable="true">First Period Exam</div>
+                <div class="exam-subtitle" id="examSubtitle" contenteditable="true">English Language — Top Goal</div>
               </div>
 
-              <!-- جدول البيانات -->
               <div class="info-container">
                 <table class="info-table">
                   <tr>
@@ -646,8 +632,8 @@
                   <tr>
                     <td contenteditable="true">1st Semester</td>
                     <td contenteditable="true">&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;/ 1448 H</td>
-                    <td id="courseNameCell" contenteditable="true">English (Mega Goal 3)</td>
-                    <td id="classNameCell" contenteditable="true">3rd Sec. / &nbsp;&nbsp;&nbsp;</td>
+                    <td id="courseNameCell" contenteditable="true">English (Top Goal)</td>
+                    <td id="classNameCell" contenteditable="true">Grade &nbsp;&nbsp;&nbsp; / </td>
                     <td contenteditable="true"></td>
                   </tr>
                 </table>
@@ -658,117 +644,8 @@
               </div>
             </div>
 
-            <!-- أسئلة الصفحة 1 -->
+            <!-- حاوية الأسئلة مفرغة تماماً -->
             <div id="page1_wrapper" class="questions-wrapper">
-              
-              <!-- Q1: سؤال القطعة الشامل لـ (كتابة إجابة + اختيارات + صح وخطأ) -->
-              <div class="question-box" id="q_box_1">
-                <div class="expand-control-bar no-print">
-                  <span>↔ Height:</span>
-                  <input type="range" min="150" max="520" value="310" oninput="resizeBox('q_area_1', this.value, 'px_lbl_1')">
-                  <span class="px-label" id="px_lbl_1">310px</span>
-                  <button class="btn-mini-tool" onclick="appendSubPart('q_area_1', 'wh')">➕ Add Part (Wh- Answer)</button>
-                  <button class="btn-mini-tool" onclick="appendSubPart('q_area_1', 'mcq')">➕ Add Part (MCQ)</button>
-                  <button class="btn-mini-tool" onclick="appendSubPart('q_area_1', 'tf')">➕ Add Part (T/F)</button>
-                  <button class="btn-delete-q" onclick="deleteQuestion('q_box_1')">✕ Delete</button>
-                </div>
-
-                <div class="section-bar">
-                  <div class="section-name" contenteditable="true">1) Reading Comprehension</div>
-                  <div class="section-mark" id="q_mark_lbl_1" contenteditable="true">(6 Marks)</div>
-                </div>
-
-                <div class="q-prompt-wrap">
-                  <div class="q-prompt" contenteditable="true">Q1: Read the passage, then answer the questions below:</div>
-                  <div class="score-badge" contenteditable="true" oninput="updateRubric('1', this.innerText)">6</div>
-                </div>
-
-                <div id="q_area_1" class="q-body-content" style="height: 310px;" contenteditable="true">
-                  <div style="background:#f8fafc; border:1px solid #e2e8f0; padding:6px; border-radius:4px; margin-bottom:6px;">
-                    <strong>Honeybees and Flowers:</strong> Honeybees and flowers share a mutual symbiotic relationship. Honeybees eat nectar and pollen from flowers to make honey and feed the hive. Since flowers bloom in the springtime, this is the season that most bees are born. In return, flowers rely on bees to spread pollen so they can reproduce.
-                  </div>
-
-                  <!-- فقرة A: أسئلة مقالية يكتب الطالب إجابتها بنفسه من القطعة -->
-                  <div class="sub-part-header">
-                    <span>A) Answer the following questions from the text:</span>
-                    <span style="font-size:11px; font-weight:normal;">(2 Marks)</span>
-                  </div>
-                  1. Why do honeybees need nectar and pollen?<br>
-                  <div class="answer-line-box">Ans: ................................................................................................................................................</div>
-                  2. In which season are most honeybees born?<br>
-                  <div class="answer-line-box">Ans: ................................................................................................................................................</div>
-
-                  <!-- فقرة B: اختيارات -->
-                  <div class="sub-part-header">
-                    <span>B) Choose the correct answer:</span>
-                    <span style="font-size:11px; font-weight:normal;">(2 Marks)</span>
-                  </div>
-                  1. Flowers rely on bees to spread their ....................<br>
-                  &nbsp;&nbsp;&nbsp;&nbsp;[ <strong>A.</strong> pollen &nbsp;&nbsp;&nbsp;&nbsp; <strong>B.</strong> seeds &nbsp;&nbsp;&nbsp;&nbsp; <strong>C.</strong> leaves ]<br>
-
-                  <!-- فقرة C: صح أو خطأ -->
-                  <div class="sub-part-header">
-                    <span>C) Put (✔) for True or (✖) for False:</span>
-                    <span style="font-size:11px; font-weight:normal;">(2 Marks)</span>
-                  </div>
-                  <div class="tf-row">
-                    <span>1. Bees and flowers can easily survive without each other.</span>
-                    <span class="tf-box">( &nbsp;&nbsp;&nbsp;&nbsp; )</span>
-                  </div>
-                  <div class="tf-row">
-                    <span>2. Honeybees store honey inside their hives.</span>
-                    <span class="tf-box">( &nbsp;&nbsp;&nbsp;&nbsp; )</span>
-                  </div>
-                </div>
-
-                <table class="rubric-strip" id="rubric_table_1">
-                  <tr>
-                    <th contenteditable="true">Q1 Mark</th>
-                    <th>1</th><td contenteditable="true"></td>
-                    <th>2</th><td contenteditable="true"></td>
-                    <th>3</th><td contenteditable="true"></td>
-                    <th>4</th><td contenteditable="true"></td>
-                    <th>5</th><td contenteditable="true"></td>
-                    <th>6</th><td contenteditable="true"></td>
-                    <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 6</td>
-                  </tr>
-                </table>
-              </div>
-
-              <!-- Q2: Spelling -->
-              <div class="question-box" id="q_box_2">
-                <div class="expand-control-bar no-print">
-                  <span>↔ Height:</span>
-                  <input type="range" min="50" max="250" value="75" oninput="resizeBox('q_area_2', this.value, 'px_lbl_2')">
-                  <span class="px-label" id="px_lbl_2">75px</span>
-                  <button class="btn-delete-q" onclick="deleteQuestion('q_box_2')">✕ Delete</button>
-                </div>
-
-                <div class="section-bar">
-                  <div class="section-name" contenteditable="true">2) Spelling / Orthography</div>
-                  <div class="section-mark" id="q_mark_lbl_2" contenteditable="true">(2 Marks)</div>
-                </div>
-
-                <div class="q-prompt-wrap">
-                  <div class="q-prompt" contenteditable="true">Q2: Complete the missing letters:</div>
-                  <div class="score-badge" contenteditable="true" oninput="updateRubric('2', this.innerText)">2</div>
-                </div>
-
-                <div id="q_area_2" class="q-body-content" style="height: 75px;" contenteditable="true">
-                  1. dev.....ted &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. Pi.....neer<br>
-                  3. rel.....able &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. exte.....sive
-                </div>
-
-                <table class="rubric-strip" id="rubric_table_2">
-                  <tr>
-                    <th contenteditable="true">Q2 Mark</th>
-                    <th>1</th><td contenteditable="true"></td>
-                    <th>2</th><td contenteditable="true"></td>
-                    <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 2</td>
-                  </tr>
-                </table>
-              </div>
-
             </div>
           </div>
 
@@ -776,150 +653,10 @@
           <div>
             <div class="footer-divider"></div>
             <div class="footer-row">
-              <div class="footer-vision">رؤيتنا : بناء الشخصية المتكاملة للطالب</div>
+              <div class="footer-vision">✨ With my best wishes ✨</div>
               <div style="display:flex; align-items:center; gap:8px;">
-                <span class="follow-badge page-follow-tag">FOLLOW ➔</span>
-                <div class="page-num page-num-tag">Page 1 of 2</div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- ======================== PAGE 2 ======================== -->
-    <div class="page" id="page2">
-      <div class="outer-border">
-        <div class="inner-border">
-          
-          <div class="main-body">
-            <div id="page2_wrapper" class="questions-wrapper">
-              
-              <!-- Q3: Vocabulary -->
-              <div class="question-box" id="q_box_3">
-                <div class="expand-control-bar no-print">
-                  <span>↔ Height:</span>
-                  <input type="range" min="80" max="300" value="115" oninput="resizeBox('q_area_3', this.value, 'px_lbl_3')">
-                  <span class="px-label" id="px_lbl_3">115px</span>
-                  <button class="btn-delete-q" onclick="deleteQuestion('q_box_3')">✕ Delete</button>
-                </div>
-
-                <div class="section-bar">
-                  <div class="section-name" contenteditable="true">3) Vocabulary</div>
-                  <div class="section-mark" id="q_mark_lbl_3" contenteditable="true">(4 Marks)</div>
-                </div>
-
-                <div class="q-prompt-wrap">
-                  <div class="q-prompt" contenteditable="true">Q3: Fill in the blanks with the correct words from the box:</div>
-                  <div class="score-badge" contenteditable="true" oninput="updateRubric('3', this.innerText)">4</div>
-                </div>
-
-                <div id="q_area_3" class="q-body-content" style="height: 115px;">
-                  <div style="border:1.5px dashed #0e5c4d; background:#f0fdf4; padding:4px 10px; text-align:center; font-weight:700; border-radius:5px; margin-bottom:6px; color:#064e3b;" contenteditable="true">[ compensate — invaluable — devoted — predators ]</div>
-                  <div contenteditable="true">
-                    1. Lions are thought to be one of the most dangerous (........................) on Earth.<br>
-                    2. To (........................) for poor eyesight, zebras have excellent hearing.
-                  </div>
-                </div>
-
-                <table class="rubric-strip" id="rubric_table_3">
-                  <tr>
-                    <th contenteditable="true">Q3 Mark</th>
-                    <th>1</th><td contenteditable="true"></td>
-                    <th>2</th><td contenteditable="true"></td>
-                    <th>3</th><td contenteditable="true"></td>
-                    <th>4</th><td contenteditable="true"></td>
-                    <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 4</td>
-                  </tr>
-                </table>
-              </div>
-
-              <!-- Q4: Grammar -->
-              <div class="question-box" id="q_box_4">
-                <div class="expand-control-bar no-print">
-                  <span>↔ Height:</span>
-                  <input type="range" min="80" max="300" value="115" oninput="resizeBox('q_area_4', this.value, 'px_lbl_4')">
-                  <span class="px-label" id="px_lbl_4">115px</span>
-                  <button class="btn-delete-q" onclick="deleteQuestion('q_box_4')">✕ Delete</button>
-                </div>
-
-                <div class="section-bar">
-                  <div class="section-name" contenteditable="true">4) Grammar</div>
-                  <div class="section-mark" id="q_mark_lbl_4" contenteditable="true">(4 Marks)</div>
-                </div>
-
-                <div class="q-prompt-wrap">
-                  <div class="q-prompt" contenteditable="true">Q4: Choose the correct answer between brackets:</div>
-                  <div class="score-badge" contenteditable="true" oninput="updateRubric('4', this.innerText)">4</div>
-                </div>
-
-                <div id="q_area_4" class="q-body-content" style="height: 115px;" contenteditable="true">
-                  1. Can I have ( <strong>A.</strong> others — <strong>B.</strong> another — <strong>C.</strong> some others ) cup of tea?<br>
-                  2. He ( <strong>A.</strong> used to — <strong>B.</strong> is used to — <strong>C.</strong> use to ) work in a garage.
-                </div>
-
-                <table class="rubric-strip" id="rubric_table_4">
-                  <tr>
-                    <th contenteditable="true">Q4 Mark</th>
-                    <th>1</th><td contenteditable="true"></td>
-                    <th>2</th><td contenteditable="true"></td>
-                    <th>3</th><td contenteditable="true"></td>
-                    <th>4</th><td contenteditable="true"></td>
-                    <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 4</td>
-                  </tr>
-                </table>
-              </div>
-
-              <!-- Q5: Writing -->
-              <div class="question-box" id="q_box_5">
-                <div class="expand-control-bar no-print">
-                  <span>↔ Height:</span>
-                  <input type="range" min="100" max="380" value="150" oninput="resizeBox('q_area_5', this.value, 'px_lbl_5')">
-                  <span class="px-label" id="px_lbl_5">150px</span>
-                  <button class="btn-delete-q" onclick="deleteQuestion('q_box_5')">✕ Delete</button>
-                </div>
-
-                <div class="section-bar">
-                  <div class="section-name" contenteditable="true">5) Writing / Composition</div>
-                  <div class="section-mark" id="q_mark_lbl_5" contenteditable="true">(4 Marks)</div>
-                </div>
-
-                <div class="q-prompt-wrap">
-                  <div class="q-prompt" contenteditable="true">Q5: Write a well-developed paragraph about: "Your Favourite Hobby"</div>
-                  <div class="score-badge" contenteditable="true">4</div>
-                </div>
-
-                <div id="q_area_5" class="q-body-content" style="height: 150px;" contenteditable="true">
-                  ................................................................................................................................................<br>
-                  ................................................................................................................................................<br>
-                  ................................................................................................................................................<br>
-                  ................................................................................................................................................
-                </div>
-
-                <table class="rubric-strip" id="rubric_table_5">
-                  <tr>
-                    <th>Criteria</th>
-                    <th>Ideas (1.5)</th><td contenteditable="true"></td>
-                    <th>Grammar (1)</th><td contenteditable="true"></td>
-                    <th>Spelling (1)</th><td contenteditable="true"></td>
-                    <th>Punctuation (0.5)</th><td contenteditable="true"></td>
-                    <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 4</td>
-                  </tr>
-                </table>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- تذييل الصفحة 2 -->
-          <div>
-            <div class="footer-divider"></div>
-            <div class="footer-row">
-              <div class="footer-vision">رؤيتنا : بناء الشخصية المتكاملة للطالب</div>
-              <div style="display:flex; align-items:center; gap:8px;">
-                <span class="page-follow-tag" style="font-size: 11px; color: #0e5c4d; font-weight: 800;" contenteditable="true">With my best wishes — End of Questions</span>
-                <div class="page-num page-num-tag" style="border: none;">Page 2 of 2</div>
+                <span class="page-follow-tag" style="font-size: 11px; color: #0e5c4d; font-weight: 800;" contenteditable="true">انتهت الأسئلة</span>
+                <div class="page-num page-num-tag" style="border: none;">Page 1 of 1</div>
               </div>
             </div>
           </div>
@@ -931,56 +668,70 @@
   </div>
 
   <script>
-    let qCounter = 5;
+    let qCounter = 0;
 
-    // إضافة فقرة فرعية (إجابة مقالية من القطعة أو MCQ أو صح وخطأ)
-    function appendSubPart(areaId, type) {
-      const area = document.getElementById(areaId);
-      if (!area) return;
-
-      if (type === 'wh') {
-        const part = document.createElement('div');
-        part.innerHTML = `
-          <div class="sub-part-header">
-            <span>Answer the following question(s) from the text:</span>
-            <span style="font-size:11px; font-weight:normal;">(Marks)</span>
-          </div>
-          1. Write your question here (e.g. Why / What / Where / How) ....................?<br>
-          <div class="answer-line-box">Ans: ................................................................................................................................................</div>
-        `;
-        area.appendChild(part);
-      } else if (type === 'mcq') {
-        const part = document.createElement('div');
-        part.innerHTML = `
-          <div class="sub-part-header">
-            <span>Choose the correct answer:</span>
-            <span style="font-size:11px; font-weight:normal;">(Marks)</span>
-          </div>
-          1. Sentence or prompt goes here ....................<br>
-          &nbsp;&nbsp;&nbsp;&nbsp;[ <strong>A.</strong> Option 1 &nbsp;&nbsp;&nbsp;&nbsp; <strong>B.</strong> Option 2 &nbsp;&nbsp;&nbsp;&nbsp; <strong>C.</strong> Option 3 ]<br>
-        `;
-        area.appendChild(part);
-      } else if (type === 'tf') {
-        const part = document.createElement('div');
-        part.innerHTML = `
-          <div class="sub-part-header">
-            <span>Put (✔) for True or (✖) for False:</span>
-            <span style="font-size:11px; font-weight:normal;">(Marks)</span>
-          </div>
-          <div class="tf-row">
-            <span>1. Sentence statement goes here...</span>
-            <span class="tf-box">( &nbsp;&nbsp;&nbsp;&nbsp; )</span>
-          </div>
-          <div class="tf-row">
-            <span>2. Another statement sentence...</span>
-            <span class="tf-box">( &nbsp;&nbsp;&nbsp;&nbsp; )</span>
-          </div>
-        `;
-        area.appendChild(part);
+    function clearAllTemplateData() {
+      if (confirm('هل أنت متأكد من تفريغ النموذج ومسح جميع البيانات والأسئلة والبدء من جديد؟')) {
+        localStorage.removeItem('english_exam_v3_clean_pages');
+        localStorage.removeItem('english_exam_v3_clean_counter');
+        location.reload();
       }
     }
 
-    // إضافة صفحة جديدة
+    // تبديل المرحلة بما يشمل Pioneer للمتوسط
+    function changeStage(stage) {
+      const stageEn = document.getElementById('stageEnglishText');
+      const stageAr = document.getElementById('stageArabicText');
+      const examTitle = document.getElementById('examTitle');
+      const examSub = document.getElementById('examSubtitle');
+      const courseCell = document.getElementById('courseNameCell');
+      const classCell = document.getElementById('classNameCell');
+
+      if (stage === 'top_goal') {
+        stageEn.innerText = "Elementary Section";
+        stageAr.innerText = "القسم الابتدائي (بنين)";
+        examTitle.innerText = "First Period Exam";
+        examSub.innerText = "English Language — Top Goal";
+        courseCell.innerText = "English (Top Goal)";
+        classCell.innerText = "Grade ..... / ";
+      } else if (stage === 'top_stars') {
+        stageEn.innerText = "Elementary Section";
+        stageAr.innerText = "القسم الابتدائي (بنين)";
+        examTitle.innerText = "First Period Exam";
+        examSub.innerText = "English Language — Top Stars";
+        courseCell.innerText = "English (Top Stars)";
+        classCell.innerText = "Grade ..... / ";
+      } else if (stage === 'we_can') {
+        stageEn.innerText = "Elementary Section";
+        stageAr.innerText = "القسم الابتدائي (بنين)";
+        examTitle.innerText = "First Period Exam";
+        examSub.innerText = "English Language — We Can";
+        courseCell.innerText = "English (We Can)";
+        classCell.innerText = "Grade ..... / ";
+      } else if (stage === 'pioneer') {
+        stageEn.innerText = "Intermediate Section";
+        stageAr.innerText = "القسم المتوسط";
+        examTitle.innerText = "First Period Exam";
+        examSub.innerText = "English Language — Pioneer";
+        courseCell.innerText = "English (Pioneer)";
+        classCell.innerText = "Grade ..... / ";
+      } else if (stage === 'super_goal') {
+        stageEn.innerText = "Intermediate Section";
+        stageAr.innerText = "القسم المتوسط";
+        examTitle.innerText = "First Period Exam";
+        examSub.innerText = "English Language — Super Goal";
+        courseCell.innerText = "English (Super Goal)";
+        classCell.innerText = "Grade ..... / ";
+      } else if (stage === 'mega_goal') {
+        stageEn.innerText = "High Secondary Section";
+        stageAr.innerText = "القسم الثانوي";
+        examTitle.innerText = "First Period Exam (1st Term)";
+        examSub.innerText = "English Language — Mega Goal";
+        courseCell.innerText = "English (Mega Goal)";
+        classCell.innerText = "Grade 12 / ";
+      }
+    }
+
     function addNewExamPage() {
       const pages = document.querySelectorAll('.page');
       const newPageNum = pages.length + 1;
@@ -999,15 +750,14 @@
                 <span class="no-print" style="font-size:11px; color:#64748b;">(Page ${newPageNum})</span>
               </div>
               <div id="page${newPageNum}_wrapper" class="questions-wrapper">
-                <!-- Drop questions here -->
               </div>
             </div>
             <div>
               <div class="footer-divider"></div>
               <div class="footer-row">
-                <div class="footer-vision">رؤيتنا : بناء الشخصية المتكاملة للطالب</div>
+                <div class="footer-vision">✨ With my best wishes ✨</div>
                 <div style="display:flex; align-items:center; gap:8px;">
-                  <span class="page-follow-tag" style="font-size: 11px; color: #0e5c4d; font-weight: 800;" contenteditable="true">With my best wishes — End of Questions</span>
+                  <span class="page-follow-tag" style="font-size: 11px; color: #0e5c4d; font-weight: 800;" contenteditable="true">انتهت الأسئلة</span>
                   <div class="page-num page-num-tag" style="border: none;">Page ${newPageNum} of ${newPageNum}</div>
                 </div>
               </div>
@@ -1021,7 +771,6 @@
       pageDiv.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // حذف الصفحة الأخيرة
     function removeLastExamPage() {
       const pages = document.querySelectorAll('.page');
       if (pages.length <= 1) {
@@ -1034,7 +783,6 @@
       }
     }
 
-    // تحديث أرقام الصفحات
     function updateAllPagesFooterAndDropdown() {
       const pages = document.querySelectorAll('.page');
       const totalPages = pages.length;
@@ -1072,7 +820,7 @@
             followTag.innerHTML = 'FOLLOW ➔';
           } else {
             followTag.className = 'page-follow-tag';
-            followTag.innerText = 'With my best wishes — End of Questions';
+            followTag.innerText = 'انتهت الأسئلة';
           }
         }
       });
@@ -1082,48 +830,6 @@
       }
     }
 
-    // تبديل المرحلة
-    function changeStage(stage) {
-      const stageEn = document.getElementById('stageEnglishText');
-      const stageAr = document.getElementById('stageArabicText');
-      const examTitle = document.getElementById('examTitle');
-      const examSub = document.getElementById('examSubtitle');
-      const courseCell = document.getElementById('courseNameCell');
-      const classCell = document.getElementById('classNameCell');
-
-      if (stage === 'secondary') {
-        stageEn.innerText = "High Secondary Section";
-        stageAr.innerText = "القسم الثانوي";
-        examTitle.innerText = "First Period Exam (1st Term)";
-        examSub.innerText = "Grade 12 / 3rd Secondary — Mega Goal 3";
-        courseCell.innerText = "English (Mega Goal 3)";
-        classCell.innerText = "3rd Sec. / ";
-      } else if (stage === 'intermediate') {
-        stageEn.innerText = "Intermediate Section";
-        stageAr.innerText = "القسم المتوسط";
-        examTitle.innerText = "English Periodic Exam";
-        examSub.innerText = "Grade 8 / 2nd Intermediate — Super Goal 2";
-        courseCell.innerText = "English (Super Goal 2)";
-        classCell.innerText = "2nd Int. / ";
-      } else if (stage === 'primary') {
-        stageEn.innerText = "Elementary Section";
-        stageAr.innerText = "القسم الابتدائي";
-        examTitle.innerText = "English Periodic Exam";
-        examSub.innerText = "Grade 6 / Elementary — We Can 3";
-        courseCell.innerText = "English (We Can 3)";
-        classCell.innerText = "6th Prim. / ";
-      }
-    }
-
-    // فرد الارتفاع
-    function resizeBox(areaId, val, labelId) {
-      const area = document.getElementById(areaId);
-      if (area) area.style.height = val + 'px';
-      const lbl = document.getElementById(labelId);
-      if (lbl) lbl.innerText = val + 'px';
-    }
-
-    // حذف السؤال
     function deleteQuestion(boxId) {
       const box = document.getElementById(boxId);
       if (box && confirm('Are you sure you want to delete this question?')) {
@@ -1131,7 +837,6 @@
       }
     }
 
-    // تحديث شريط درجات السؤال
     function updateRubric(qNum, valueText) {
       const cleanVal = parseInt(valueText.trim());
       const rubricTable = document.getElementById(`rubric_table_${qNum}`);
@@ -1140,7 +845,7 @@
       if (!rubricTable || isNaN(cleanVal) || cleanVal <= 0) return;
 
       if (sectionMarkLbl) {
-        sectionMarkLbl.innerText = `(${cleanVal} Marks)`;
+        sectionMarkLbl.innerText = `(${cleanVal} ${cleanVal === 1 ? 'Mark' : 'Marks'})`;
       }
 
       let newRowHtml = `<tr><th contenteditable="true">Q${qNum} Mark</th>`;
@@ -1152,7 +857,6 @@
       rubricTable.innerHTML = newRowHtml;
     }
 
-    // إضافة سؤال جديد
     function addNewEnglishQuestion() {
       qCounter++;
       const pageWrapperId = document.getElementById('targetPageSelect').value;
@@ -1166,7 +870,6 @@
 
       const boxId = `q_box_${qCounter}`;
       const areaId = `q_area_${qCounter}`;
-      const lblId = `px_lbl_${qCounter}`;
       const rubricId = `rubric_table_${qCounter}`;
       const markLblId = `q_mark_lbl_${qCounter}`;
 
@@ -1174,150 +877,191 @@
       box.className = 'question-box';
       box.id = boxId;
 
-      let sectionTitle = `${qCounter}) Reading Comprehension`;
-      let promptTitle = `Q${qCounter}: Read the passage and answer the questions:`;
+      let sectionTitle = `${qCounter}) Section Title`;
+      let promptTitle = `Q${qCounter}: Instructions for question here...`;
+      let markValue = "4";
       let innerContentHtml = '';
+      let rubricHtml = '';
 
-      if (qType === 'reading_all') {
+      if (qType === 'handwriting') {
+        sectionTitle = `E) Handwriting`;
+        promptTitle = `Q${qCounter}- Copy the following sentence neatly on the lines below:`;
+        markValue = "1";
+
         innerContentHtml = `
-          <div id="${areaId}" class="q-body-content" style="height: 280px;" contenteditable="true">
-            <div style="background:#f8fafc; border:1px solid #e2e8f0; padding:6px; border-radius:4px; margin-bottom:6px;">
-              <strong>Passage:</strong> Insert your reading comprehension text here...
-            </div>
-
-            <div class="sub-part-header">
-              <span>A) Answer the following questions from the text:</span>
-              <span style="font-size:11px; font-weight:normal;">(Marks)</span>
-            </div>
-            1. Write question sentence here ....................?<br>
-            <div class="answer-line-box">Ans: ................................................................................................................................................</div>
-
-            <div class="sub-part-header">
-              <span>B) Choose the correct answer:</span>
-              <span style="font-size:11px; font-weight:normal;">(Marks)</span>
-            </div>
-            1. Question sentence prompt goes here ....................<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;[ <strong>A.</strong> Choice 1 &nbsp;&nbsp;&nbsp;&nbsp; <strong>B.</strong> Choice 2 &nbsp;&nbsp;&nbsp;&nbsp; <strong>C.</strong> Choice 3 ]<br>
-
-            <div class="sub-part-header">
-              <span>C) Put (✔) for True or (✖) for False:</span>
-              <span style="font-size:11px; font-weight:normal;">(Marks)</span>
-            </div>
-            <div class="tf-row">
-              <span>1. Write True/False sentence here...</span>
-              <span class="tf-box">( &nbsp;&nbsp;&nbsp;&nbsp; )</span>
+          <div class="handwriting-box">
+            <div class="handwriting-sample-text" contenteditable="true">“ We speak English in the club. ”</div>
+            <div class="four-lines-container">
+              <div class="four-line-red"></div>
+              <div class="four-line-blue-dashed"></div>
+              <div class="four-line-blue-dashed"></div>
+              <div class="four-line-red"></div>
             </div>
           </div>
         `;
+
+        rubricHtml = `
+          <table class="rubric-strip" id="${rubricId}">
+            <tr>
+              <th contenteditable="true">Q${qCounter} Mark</th>
+              <th>Legibility</th><td contenteditable="true"></td>
+              <th>Line Alignment</th><td contenteditable="true"></td>
+              <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 1</td>
+            </tr>
+          </table>
+        `;
+      } else if (qType === 'reading_split') {
+        sectionTitle = `${qCounter}) Reading Comprehension`;
+        promptTitle = `Q${qCounter}: Read the text, then answer the questions below:`;
+        markValue = "6";
+
+        innerContentHtml = `
+          <div id="${areaId}" class="q-body-content" style="height: 180px;" contenteditable="true">
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; padding:6px; border-radius:4px; margin-bottom:6px;">
+              <strong>Passage:</strong> Write your reading passage here...
+            </div>
+            1. Question prompt goes here ....................<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;[ <strong>A.</strong> Choice 1 &nbsp;&nbsp;&nbsp;&nbsp; <strong>B.</strong> Choice 2 &nbsp;&nbsp;&nbsp;&nbsp; <strong>C.</strong> Choice 3 ]
+          </div>
+        `;
+
+        rubricHtml = `
+          <table class="rubric-strip" id="${rubricId}">
+            <tr>
+              <th contenteditable="true">Q${qCounter} Mark</th>
+              <th>1</th><td contenteditable="true"></td>
+              <th>2</th><td contenteditable="true"></td>
+              <th>3</th><td contenteditable="true"></td>
+              <th>4</th><td contenteditable="true"></td>
+              <th>5</th><td contenteditable="true"></td>
+              <th>6</th><td contenteditable="true"></td>
+              <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 6</td>
+            </tr>
+          </table>
+        `;
       } else if (qType === 'vocab') {
         sectionTitle = `${qCounter}) Vocabulary`;
-        promptTitle = `Q${qCounter}: Fill in the blanks with suitable words:`;
+        promptTitle = `Q${qCounter}: Fill in the blanks with words from the box:`;
+        markValue = "4";
+
         innerContentHtml = `
-          <div id="${areaId}" class="q-body-content" style="height: 120px;">
+          <div id="${areaId}" class="q-body-content" style="height: 110px;">
             <div style="border:1.5px dashed #0e5c4d; background:#f0fdf4; padding:4px 10px; text-align:center; font-weight:700; border-radius:5px; margin-bottom:6px; color:#064e3b;" contenteditable="true">[ word1 — word2 — word3 — word4 ]</div>
             <div contenteditable="true">
-              1. Sentence with missing word (........................).<br>
-              2. Another sentence with missing word (........................).
+              1. Sentence prompt with missing word (........................).<br>
+              2. Another sentence prompt (........................).
             </div>
           </div>
+        `;
+
+        rubricHtml = `
+          <table class="rubric-strip" id="${rubricId}">
+            <tr>
+              <th contenteditable="true">Q${qCounter} Mark</th>
+              <th>1</th><td contenteditable="true"></td><th>2</th><td contenteditable="true"></td>
+              <th>3</th><td contenteditable="true"></td><th>4</th><td contenteditable="true"></td>
+              <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 4</td>
+            </tr>
+          </table>
         `;
       } else if (qType === 'grammar') {
         sectionTitle = `${qCounter}) Grammar`;
         promptTitle = `Q${qCounter}: Choose the correct answer between brackets:`;
+        markValue = "4";
+
         innerContentHtml = `
           <div id="${areaId}" class="q-body-content" style="height: 110px;" contenteditable="true">
-            1. She ( <strong>A.</strong> go — <strong>B.</strong> goes — <strong>C.</strong> gone ) to school every morning.<br>
-            2. They have ( <strong>A.</strong> finish — <strong>B.</strong> finished — <strong>C.</strong> finishing ) their homework.
+            1. Sentence prompt ( <strong>A.</strong> option 1 — <strong>B.</strong> option 2 — <strong>C.</strong> option 3 ).<br>
+            2. Another sentence ( <strong>A.</strong> option 1 — <strong>B.</strong> option 2 — <strong>C.</strong> option 3 ).
           </div>
         `;
-      } else if (qType === 'spelling') {
-        sectionTitle = `${qCounter}) Spelling / Orthography`;
-        promptTitle = `Q${qCounter}: Complete the missing letters:`;
-        innerContentHtml = `
-          <div id="${areaId}" class="q-body-content" style="height: 80px;" contenteditable="true">
-            1. te.....cher &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. frie.....d<br>
-            3. sch.....ol &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4. st.....dent
-          </div>
+
+        rubricHtml = `
+          <table class="rubric-strip" id="${rubricId}">
+            <tr>
+              <th contenteditable="true">Q${qCounter} Mark</th>
+              <th>1</th><td contenteditable="true"></td><th>2</th><td contenteditable="true"></td>
+              <th>3</th><td contenteditable="true"></td><th>4</th><td contenteditable="true"></td>
+              <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 4</td>
+            </tr>
+          </table>
         `;
       } else {
         sectionTitle = `${qCounter}) Composition / Writing`;
-        promptTitle = `Q${qCounter}: Write a paragraph about:`;
+        promptTitle = `Q${qCounter}: Write a short paragraph about:`;
+        markValue = "4";
+
         innerContentHtml = `
-          <div id="${areaId}" class="q-body-content" style="height: 150px;" contenteditable="true">
+          <div id="${areaId}" class="q-body-content" style="height: 120px;" contenteditable="true">
             ................................................................................................................................................<br>
             ................................................................................................................................................<br>
             ................................................................................................................................................
           </div>
         `;
+
+        rubricHtml = `
+          <table class="rubric-strip" id="${rubricId}">
+            <tr>
+              <th>Criteria</th>
+              <th>Ideas (1.5)</th><td contenteditable="true"></td>
+              <th>Grammar (1)</th><td contenteditable="true"></td>
+              <th>Spelling (1)</th><td contenteditable="true"></td>
+              <th>Punctuation (0.5)</th><td contenteditable="true"></td>
+              <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 4</td>
+            </tr>
+          </table>
+        `;
       }
 
       box.innerHTML = `
         <div class="expand-control-bar no-print">
-          <span>↔ Height:</span>
-          <input type="range" min="60" max="420" value="130" oninput="resizeBox('${areaId}', this.value, '${lblId}')">
-          <span class="px-label" id="${lblId}">130px</span>
-          <button class="btn-mini-tool" onclick="appendSubPart('${areaId}', 'wh')">➕ Add Part (Wh- Answer)</button>
-          <button class="btn-mini-tool" onclick="appendSubPart('${areaId}', 'mcq')">➕ Add Part (MCQ)</button>
-          <button class="btn-mini-tool" onclick="appendSubPart('${areaId}', 'tf')">➕ Add Part (T/F)</button>
-          <button class="btn-delete-q" onclick="deleteQuestion('${boxId}')">✕ Delete</button>
+          <button class="btn-delete-q" onclick="deleteQuestion('${boxId}')">✕ Delete Question</button>
         </div>
 
         <div class="section-bar">
           <div class="section-name" contenteditable="true">${sectionTitle}</div>
-          <div class="section-mark" id="${markLblId}" contenteditable="true">(4 Marks)</div>
+          <div class="section-mark" id="${markLblId}" contenteditable="true">(${markValue} ${markValue === "1" ? 'Mark' : 'Marks'})</div>
         </div>
 
         <div class="q-prompt-wrap">
           <div class="q-prompt" contenteditable="true">${promptTitle}</div>
-          <div class="score-badge" contenteditable="true" oninput="updateRubric('${qCounter}', this.innerText)">4</div>
+          <div class="score-badge" contenteditable="true" oninput="updateRubric('${qCounter}', this.innerText)">${markValue}</div>
         </div>
 
         ${innerContentHtml}
-
-        <table class="rubric-strip" id="${rubricId}">
-          <tr>
-            <th contenteditable="true">Q${qCounter} Mark</th>
-            <th>1</th><td contenteditable="true"></td>
-            <th>2</th><td contenteditable="true"></td>
-            <th>3</th><td contenteditable="true"></td>
-            <th>4</th><td contenteditable="true"></td>
-            <th>Total</th><td class="rubric-total-cell" contenteditable="true">/ 4</td>
-          </tr>
-        </table>
+        ${rubricHtml}
       `;
 
       targetWrapper.appendChild(box);
       box.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
-    // رفع الشعار
     function uploadLogo(input) {
       if (input.files && input.files[0]) {
         const reader = new FileReader();
         reader.onload = function(e) {
           document.getElementById('schoolLogo').src = e.target.result;
-          localStorage.setItem('english_exam_logo', e.target.result);
+          localStorage.setItem('english_exam_v3_logo', e.target.result);
         };
         reader.readAsDataURL(input.files[0]);
       }
     }
 
-    // حفظ واسترجاع
     function saveExamData() {
-      localStorage.setItem('english_exam_all_pages', document.getElementById('pagesContainer').innerHTML);
-      localStorage.setItem('english_exam_q_counter', qCounter);
-      alert('Exam template, questions, and parts saved successfully!');
+      localStorage.setItem('english_exam_v3_clean_pages', document.getElementById('pagesContainer').innerHTML);
+      localStorage.setItem('english_exam_v3_clean_counter', qCounter);
+      alert('Exam template saved successfully!');
     }
 
     window.onload = function() {
-      const savedLogo = localStorage.getItem('english_exam_logo');
+      const savedLogo = localStorage.getItem('english_exam_v3_logo');
       if (savedLogo) {
         document.getElementById('schoolLogo').src = savedLogo;
       }
-      const savedPages = localStorage.getItem('english_exam_all_pages');
+      const savedPages = localStorage.getItem('english_exam_v3_clean_pages');
       if (savedPages) {
         document.getElementById('pagesContainer').innerHTML = savedPages;
-        const savedCounter = localStorage.getItem('english_exam_q_counter');
+        const savedCounter = localStorage.getItem('english_exam_v3_clean_counter');
         if (savedCounter) qCounter = parseInt(savedCounter);
         updateAllPagesFooterAndDropdown();
       }
