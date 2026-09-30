@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>English Exam Paper & Model Answer - Al-Bayariq Private Schools</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800;900&family=Alexandria:wght@400;600;700;800&family=Comic+Neue:wght@700&family=Courier+Prime&family=Times+New+Roman&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800;900&family=Alexandria:wght@400;600;700;800&family=Comic+Neue:wght@700&display=swap');
 
     @page {
       size: A4 portrait;
@@ -23,7 +23,15 @@
       background-color: #0f172a;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #0f172a;
-      direction: ltr;
+      direction: ltr !important;
+      text-align: left !important;
+    }
+
+    /* تثبيت المحاذاة والاتجاه من اليسار إجبارياً لكافة الصناديق */
+    [contenteditable="true"], .q-body-content, .question-box, .q-prompt, .section-bar, input, select {
+      direction: ltr !important;
+      text-align: left !important;
+      unicode-bidi: isolate;
     }
 
     /* الشريط العلوي العام */
@@ -87,6 +95,10 @@
       border: 1px solid #7ea698;
     }
 
+    .btn-print-main:hover {
+      background: #147a66;
+    }
+
     .select-tool {
       background: #0f172a;
       color: #f8fafc;
@@ -135,7 +147,6 @@
       background: transparent;
     }
 
-    /* مؤشر الحفظ التلقائي */
     .autosave-status {
       font-size: 11px;
       font-weight: 800;
@@ -180,7 +191,10 @@
     }
 
     @media print {
-      body { background: transparent; padding: 0; }
+      body {
+        background: transparent !important;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Tahoma, Arial, sans-serif !important;
+      }
       .top-toolbar, .no-print { display: none !important; }
       .page {
         margin: 0 !important;
@@ -225,7 +239,7 @@
     .header-col { width: 35%; }
 
     .header-col.left-side {
-      text-align: left;
+      text-align: left !important;
       font-size: 12px;
       line-height: 1.35;
       color: #0e5c4d;
@@ -250,12 +264,12 @@
     }
 
     .header-col.right-side {
-      text-align: right;
+      text-align: right !important;
       font-size: 12px;
       line-height: 1.35;
       color: #0e5c4d;
       font-weight: 800;
-      direction: rtl;
+      direction: rtl !important;
       font-family: 'Alexandria', sans-serif;
     }
 
@@ -267,7 +281,7 @@
       margin: 4px 0 6px 0;
     }
 
-    .exam-title-box { text-align: center; margin-bottom: 5px; }
+    .exam-title-box { text-align: center !important; margin-bottom: 5px; }
 
     .exam-title {
       font-size: 18px;
@@ -276,6 +290,7 @@
       margin: 0;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      text-align: center !important;
     }
 
     .exam-subtitle {
@@ -283,6 +298,7 @@
       font-weight: 700;
       color: #0e5c4d;
       margin-top: 1px;
+      text-align: center !important;
     }
 
     /* جدول بيانات الطالب */
@@ -456,9 +472,7 @@
       overflow: hidden;
     }
 
-    /* ========================================================
-       تنسيقات معرض الصور المتجاورة (Side by Side) والتحكم بها
-       ======================================================== */
+    /* تنسيق الصور بجوار بعضها ↔ أو فوق بعضها ↕ */
     .img-toolbar-bar {
       display: flex;
       align-items: center;
@@ -487,7 +501,7 @@
 
     .images-grid-container.stacked {
       flex-direction: column !important;
-      align-items: center !important;
+      align-items: flex-start !important;
     }
 
     .image-card-box {
@@ -568,7 +582,7 @@
     .four-line-red { height: 1.5px; background-color: #ef4444; width: 100%; }
     .four-line-blue-dashed { border-top: 1.5px dashed #3b82f6; width: 100%; height: 0; }
 
-    /* الإجابات النموذجية باللون الأحمر */
+    /* الإجابات النموذجية */
     .ans-key { color: #dc2626 !important; font-weight: 800 !important; display: none; }
     body.model-answer-active .ans-key { display: inline !important; }
     body.model-answer-active .blank-dots { display: none !important; }
@@ -636,13 +650,12 @@
     <div class="toolbar-left">
       <button class="btn-action btn-key" id="modelAnswerBtn" onclick="toggleModelAnswer()">🔑 Model Answer</button>
 
-      <!-- شريط تنسيق الخطوط -->
+      <!-- شريط أدوات التنسيق المباشر للخطوط -->
       <div class="format-toolbar" title="Text Styling">
         <select class="select-tool" style="padding:2px 4px; font-size:11.5px;" onchange="applyFormat('fontName', this.value)">
           <option value="Segoe UI">Segoe UI</option>
           <option value="Comic Neue">Comic / Kids</option>
           <option value="Times New Roman">Times New Roman</option>
-          <option value="Courier Prime">Typewriter</option>
           <option value="Alexandria">Alexandria</option>
         </select>
 
@@ -654,10 +667,10 @@
           <option value="6">X-Large (24px)</option>
         </select>
 
-        <button class="btn-fmt" onclick="applyFormat('bold')" title="Bold (Ctrl+B)"><b>B</b></button>
-        <button class="btn-fmt" onclick="applyFormat('italic')" title="Italic (Ctrl+I)"><i>I</i></button>
-        <button class="btn-fmt" onclick="applyFormat('underline')" title="Underline (Ctrl+U)"><u>U</u></button>
-        <input type="color" class="color-picker-input" value="#0f172a" onchange="applyFormat('foreColor', this.value)" title="Change Text Color">
+        <button class="btn-fmt" onclick="applyFormat('bold')" title="Bold"><b>B</b></button>
+        <button class="btn-fmt" onclick="applyFormat('italic')" title="Italic"><i>I</i></button>
+        <button class="btn-fmt" onclick="applyFormat('underline')" title="Underline"><u>U</u></button>
+        <input type="color" class="color-picker-input" value="#0f172a" onchange="applyFormat('foreColor', this.value)" title="Change Color">
       </div>
 
       <!-- اختيار المنهج -->
@@ -681,11 +694,11 @@
       </select>
 
       <select id="questionTypeSelect" class="select-tool">
-        <option value="image_q">🖼️ Image / Picture Question (Side by Side)</option>
+        <option value="image_q">🖼️ Image Question (Side by Side / Stacked)</option>
         <option value="reading_split">📖 Reading Comprehension (Passage + Parts)</option>
         <option value="handwriting">✍️ E) Handwriting (4-Lines / Copying)</option>
         <option value="vocab">🔤 Vocabulary (Word Box)</option>
-        <option value="grammar">⚙️️ Grammar (MCQ)</option>
+        <option value="grammar">⚙️ Grammar (MCQ)</option>
         <option value="spelling">🔠 Spelling / Missing Letters</option>
         <option value="composition">📝 Composition / Writing</option>
       </select>
@@ -695,11 +708,10 @@
       <button class="btn-action" onclick="removeLastExamPage()">📄 ✖ Remove Page</button>
       <button class="btn-action" onclick="document.getElementById('logoUploader').click();">📷 Logo</button>
       <button class="btn-action btn-danger-clear" onclick="clearAllTemplateData()" title="Clear and reset">🧹 Clear</button>
-      <button class="btn-action btn-print-main" onclick="window.print();">🖨️ Print (A4)</button>
+      <button class="btn-action btn-print-main" onclick="fastPrint();">🖨️ Print (A4)</button>
       <input type="file" id="logoUploader" accept="image/*" style="display:none;" onchange="uploadLogo(this)">
     </div>
 
-    <!-- مؤشر الحفظ التلقائي وزر الواتساب -->
     <div class="toolbar-right">
       <span class="autosave-status" id="autoSaveIndicator">⚡ Auto-saved</span>
       <a href="https://wa.me/966530665625" target="_blank" class="whatsapp-btn" title="Contact on WhatsApp">
@@ -802,6 +814,14 @@
     let isModelAnswer = false;
     let autoSaveTimer = null;
 
+    // طباعة سريعة بدون تعليق
+    function fastPrint() {
+      window.getSelection()?.removeAllRanges();
+      setTimeout(() => {
+        window.print();
+      }, 50);
+    }
+
     // تطبيق التنسيق
     function applyFormat(cmd, value = null) {
       document.execCommand(cmd, false, value);
@@ -821,15 +841,15 @@
     }
 
     function saveExamDataLocally() {
-      localStorage.setItem('english_exam_v11_pages', document.getElementById('pagesContainer').innerHTML);
-      localStorage.setItem('english_exam_v11_counter', qCounter);
+      localStorage.setItem('english_exam_v12_pages', document.getElementById('pagesContainer').innerHTML);
+      localStorage.setItem('english_exam_v12_counter', qCounter);
     }
 
     document.addEventListener('input', () => {
       triggerAutoSave();
     });
 
-    // تبديل عرض الصور بجوار بعضها (Side by Side) أو تحت بعضها (Stacked)
+    // تبديل عرض الصور بجوار بعضها (Side by Side) أو فوق بعضها (Stacked)
     function setLayoutMode(gridId, mode) {
       const grid = document.getElementById(gridId);
       if (!grid) return;
@@ -854,7 +874,7 @@
       triggerAutoSave();
     }
 
-    // إضافة بطاقة صورة بجانب الصور الحالية
+    // إضافة بطاقة صورة إضافية
     function addImageCardToGrid(gridId) {
       imgItemCounter++;
       const grid = document.getElementById(gridId);
@@ -924,7 +944,7 @@
       triggerAutoSave();
     }
 
-    // زر إضافة صورة بجوار بعضها داخل أي سؤال موجود
+    // زر إضافة صورة بجوار بعضها أو فوق بعضها داخل أي سؤال موجود
     function appendImageToQuestion(areaId) {
       imgContainerCounter++;
       const area = document.getElementById(areaId);
@@ -935,12 +955,12 @@
 
       wrapper.innerHTML = `
         <div class="img-toolbar-bar no-print">
-          <span>🖼️ Images Layout:</span>
+          <span>🖼️ Layout:</span>
           <button class="btn-mini-tool" onclick="setLayoutMode('${gridId}', 'side-by-side')">↔ Side by Side</button>
-          <button class="btn-mini-tool" onclick="setLayoutMode('${gridId}', 'stacked')">↕ Stacked</button>
+          <button class="btn-mini-tool" onclick="setLayoutMode('${gridId}', 'stacked')">↕ Stacked (Above/Below)</button>
           <button class="btn-mini-tool" onclick="addImageCardToGrid('${gridId}')">➕ Add Image</button>
           <span style="margin-left:auto; font-size:10.5px;">Size:</span>
-          <input type="range" min="60" max="200" value="95" oninput="resizeImagesInGrid('${gridId}', this.value)" style="width:70px;">
+          <input type="range" min="60" max="220" value="95" oninput="resizeImagesInGrid('${gridId}', this.value)" style="width:70px;">
           <button class="btn-delete-q" onclick="this.closest('.img-toolbar-bar').nextElementSibling.remove(); this.closest('.img-toolbar-bar').remove(); triggerAutoSave();">✕</button>
         </div>
         <div id="${gridId}" class="images-grid-container side-by-side">
@@ -963,17 +983,37 @@
       triggerAutoSave();
     }
 
+    // ضغط الصور تلقائياً لجعل الطباعة والتحميل فوري
     function loadQuestionImg(input, targetImgId) {
       if (input.files && input.files[0]) {
+        const file = input.files[0];
         const reader = new FileReader();
         reader.onload = function(e) {
-          const imgElem = document.getElementById(targetImgId);
-          if (imgElem) {
-            imgElem.src = e.target.result;
-            triggerAutoSave();
-          }
+          const img = new Image();
+          img.onload = function() {
+            const canvas = document.createElement('canvas');
+            const maxDim = 800;
+            let w = img.width;
+            let h = img.height;
+            if (w > maxDim || h > maxDim) {
+              if (w > h) { h = Math.round((h * maxDim) / w); w = maxDim; }
+              else { w = Math.round((w * maxDim) / h); h = maxDim; }
+            }
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, w, h);
+
+            const compressedBase64 = canvas.toDataURL('image/jpeg', 0.85);
+            const imgElem = document.getElementById(targetImgId);
+            if (imgElem) {
+              imgElem.src = compressedBase64;
+              triggerAutoSave();
+            }
+          };
+          img.src = e.target.result;
         };
-        reader.readAsDataURL(input.files[0]);
+        reader.readAsDataURL(file);
       }
     }
 
@@ -1027,8 +1067,8 @@
 
     function clearAllTemplateData() {
       if (confirm('هل أنت متأكد من تفريغ النموذج ومسح جميع البيانات والأسئلة والبدء من جديد؟')) {
-        localStorage.removeItem('english_exam_v11_pages');
-        localStorage.removeItem('english_exam_v11_counter');
+        localStorage.removeItem('english_exam_v12_pages');
+        localStorage.removeItem('english_exam_v12_counter');
         location.reload();
       }
     }
@@ -1261,9 +1301,9 @@
 
         innerContentHtml = `
           <div class="img-toolbar-bar no-print">
-            <span>🖼️ Pictures Layout:</span>
+            <span>🖼️️ Layout:</span>
             <button class="btn-mini-tool" onclick="setLayoutMode('${gridId}', 'side-by-side')">↔ Side by Side</button>
-            <button class="btn-mini-tool" onclick="setLayoutMode('${gridId}', 'stacked')">↕ Stacked</button>
+            <button class="btn-mini-tool" onclick="setLayoutMode('${gridId}', 'stacked')">↕ Stacked (Above/Below)</button>
             <button class="btn-mini-tool" onclick="addImageCardToGrid('${gridId}')">➕ Add Image</button>
             <span style="margin-left:auto; font-size:10.5px;">Size:</span>
             <input type="range" min="60" max="220" value="100" oninput="resizeImagesInGrid('${gridId}', this.value)" style="width:70px;">
@@ -1467,7 +1507,7 @@
         const reader = new FileReader();
         reader.onload = function(e) {
           document.getElementById('schoolLogo').src = e.target.result;
-          localStorage.setItem('english_exam_v11_logo', e.target.result);
+          localStorage.setItem('english_exam_v12_logo', e.target.result);
           triggerAutoSave();
         };
         reader.readAsDataURL(input.files[0]);
@@ -1475,14 +1515,14 @@
     }
 
     window.onload = function() {
-      const savedLogo = localStorage.getItem('english_exam_v11_logo');
+      const savedLogo = localStorage.getItem('english_exam_v12_logo');
       if (savedLogo) {
         document.getElementById('schoolLogo').src = savedLogo;
       }
-      const savedPages = localStorage.getItem('english_exam_v11_pages');
+      const savedPages = localStorage.getItem('english_exam_v12_pages');
       if (savedPages) {
         document.getElementById('pagesContainer').innerHTML = savedPages;
-        const savedCounter = localStorage.getItem('english_exam_v11_counter');
+        const savedCounter = localStorage.getItem('english_exam_v12_counter');
         if (savedCounter) qCounter = parseInt(savedCounter);
         updateAllPagesFooterAndDropdown();
       }
