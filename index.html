@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>English Exam Paper & Model Answer - Al-Bayariq Private Schools</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800;900&family=Alexandria:wght@400;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800;900&family=Alexandria:wght@400;600;700;800&family=Comic+Neue:wght@700&family=Courier+Prime&family=Times+New+Roman&display=swap');
 
     @page {
       size: A4 portrait;
@@ -74,9 +74,6 @@
       color: #ffffff !important;
       border: 1px solid #ef4444 !important;
     }
-    .btn-key:hover {
-      background: #dc2626 !important;
-    }
 
     .btn-danger-clear {
       background: #dc2626 !important;
@@ -90,10 +87,6 @@
       border: 1px solid #7ea698;
     }
 
-    .btn-print-main:hover {
-      background: #147a66;
-    }
-
     .select-tool {
       background: #0f172a;
       color: #f8fafc;
@@ -105,32 +98,72 @@
       outline: none;
     }
 
+    /* شريط أدوات التنسيق المباشر للخطوط */
+    .format-toolbar {
+      background: #0f172a;
+      border: 1.5px solid #c19a4b;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 6px;
+      gap: 4px;
+    }
+
+    .btn-fmt {
+      background: #334155;
+      color: #fff;
+      border: 1px solid #64748b;
+      border-radius: 4px;
+      width: 26px;
+      height: 26px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 12px;
+    }
+    .btn-fmt:hover { background: #475569; }
+
+    .color-picker-input {
+      width: 26px;
+      height: 26px;
+      padding: 0;
+      border: 1px solid #64748b;
+      border-radius: 4px;
+      cursor: pointer;
+      background: transparent;
+    }
+
+    /* مؤشر الحفظ التلقائي */
+    .autosave-status {
+      font-size: 11px;
+      font-weight: 800;
+      color: #34d399;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(6, 78, 59, 0.6);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid #059669;
+    }
+
     .whatsapp-btn {
       background: #25D366;
       color: #ffffff;
       border: none;
-      padding: 6px 14px;
+      padding: 6px 12px;
       border-radius: 6px;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 800;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       text-decoration: none;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      transition: all 0.2s;
     }
 
-    .whatsapp-btn:hover {
-      background: #20bd5a;
-      transform: translateY(-1px);
-    }
-
-    .whatsapp-btn svg {
-      width: 17px;
-      height: 17px;
-      fill: currentColor;
-    }
+    .whatsapp-btn svg { width: 15px; height: 15px; fill: currentColor; }
 
     /* صفحة A4 */
     .page {
@@ -148,25 +181,16 @@
 
     @media print {
       body { background: transparent; padding: 0; }
-      .top-toolbar, .no-print {
-        display: none !important;
-      }
+      .top-toolbar, .no-print { display: none !important; }
       .page {
         margin: 0 !important;
         box-shadow: none !important;
         height: 297mm !important;
         max-height: 297mm !important;
       }
-      .question-box {
-        page-break-inside: avoid;
-      }
-      img {
-        display: block !important;
-        max-width: 100% !important;
-      }
-      [contenteditable="true"] {
-        outline: none !important;
-      }
+      .question-box { page-break-inside: avoid; }
+      img { display: block !important; max-width: 100% !important; }
+      [contenteditable="true"] { outline: none !important; }
     }
 
     .outer-border {
@@ -188,11 +212,7 @@
       flex-grow: 1;
     }
 
-    .main-body {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
+    .main-body { flex: 1; display: flex; flex-direction: column; }
 
     /* الترويسة */
     .header-top {
@@ -239,11 +259,7 @@
       font-family: 'Alexandria', sans-serif;
     }
 
-    .sub-dep {
-      font-size: 11px;
-      color: #2e4d44;
-      font-weight: 600;
-    }
+    .sub-dep { font-size: 11px; color: #2e4d44; font-weight: 600; }
 
     .divider-line {
       height: 2.5px;
@@ -251,10 +267,7 @@
       margin: 4px 0 6px 0;
     }
 
-    .exam-title-box {
-      text-align: center;
-      margin-bottom: 5px;
-    }
+    .exam-title-box { text-align: center; margin-bottom: 5px; }
 
     .exam-title {
       font-size: 18px;
@@ -273,17 +286,9 @@
     }
 
     /* جدول بيانات الطالب */
-    .info-container {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
+    .info-container { display: flex; gap: 10px; margin-bottom: 8px; }
 
-    .info-table {
-      flex: 1;
-      border-collapse: collapse;
-      font-size: 11px;
-    }
+    .info-table { flex: 1; border-collapse: collapse; font-size: 11px; }
 
     .info-table th {
       background-color: #edf5f2;
@@ -332,13 +337,8 @@
       flex-grow: 1;
     }
 
-    /* صناديق الأسئلة */
-    .questions-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 4px;
-    }
+    /* الأسئلة */
+    .questions-wrapper { display: flex; flex-direction: column; gap: 8px; margin-bottom: 4px; }
 
     .question-box {
       border: 1px dashed #cbd5e1;
@@ -443,7 +443,6 @@
       align-items: center;
       gap: 3px;
     }
-    .btn-mini-tool:hover { background: #147a66; }
 
     .q-body-content {
       border: 1px solid #e2e8f0;
@@ -457,15 +456,41 @@
       overflow: hidden;
     }
 
-    /* حاوية الصورة المدمجة في السؤال */
-    .embedded-img-wrap {
+    /* ========================================================
+       تنسيقات معرض الصور المتجاورة (Side by Side) والتحكم بها
+       ======================================================== */
+    .img-toolbar-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #e2e8f0;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    .images-grid-container {
       display: flex;
       gap: 10px;
       align-items: flex-start;
       margin-bottom: 6px;
+      width: 100%;
     }
 
-    .embedded-img-card {
+    .images-grid-container.side-by-side {
+      flex-direction: row !important;
+      flex-wrap: wrap !important;
+      justify-content: flex-start !important;
+    }
+
+    .images-grid-container.stacked {
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+
+    .image-card-box {
       border: 1.5px dashed #cbd5e1;
       padding: 4px;
       border-radius: 5px;
@@ -474,19 +499,27 @@
       display: inline-flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 3px;
     }
 
-    .embedded-img-card img {
-      max-height: 110px;
-      max-width: 160px;
+    .image-card-box img {
+      max-height: 100px;
+      max-width: 150px;
       object-fit: contain;
       border-radius: 4px;
       cursor: pointer;
       border: 1px solid #94a3b8;
     }
 
-    /* الفقرات الداخلية */
+    .image-caption {
+      font-size: 11px;
+      font-weight: 700;
+      color: #0e5c4d;
+      outline: none;
+      text-align: center;
+      width: 100%;
+    }
+
     .sub-part-header {
       font-weight: 800;
       color: #0e5c4d;
@@ -501,25 +534,9 @@
       align-items: center;
     }
 
-    .tf-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 2px 0;
-    }
-
-    .tf-box {
-      font-weight: 800;
-      color: #475569;
-      min-width: 60px;
-      text-align: right;
-    }
-
-    .answer-line-box {
-      margin-top: 2px;
-      margin-bottom: 5px;
-      color: #334155;
-    }
+    .tf-row { display: flex; justify-content: space-between; align-items: center; padding: 2px 0; }
+    .tf-box { font-weight: 800; color: #475569; min-width: 60px; text-align: right; }
+    .answer-line-box { margin-top: 2px; margin-bottom: 5px; color: #334155; }
 
     /* سؤال الخط بالأسطر الأربعة */
     .handwriting-box {
@@ -548,39 +565,16 @@
       margin-bottom: 4px;
     }
 
-    .four-line-red {
-      height: 1.5px;
-      background-color: #ef4444;
-      width: 100%;
-    }
+    .four-line-red { height: 1.5px; background-color: #ef4444; width: 100%; }
+    .four-line-blue-dashed { border-top: 1.5px dashed #3b82f6; width: 100%; height: 0; }
 
-    .four-line-blue-dashed {
-      border-top: 1.5px dashed #3b82f6;
-      width: 100%;
-      height: 0;
-    }
+    /* الإجابات النموذجية باللون الأحمر */
+    .ans-key { color: #dc2626 !important; font-weight: 800 !important; display: none; }
+    body.model-answer-active .ans-key { display: inline !important; }
+    body.model-answer-active .blank-dots { display: none !important; }
+    body.model-answer-active .rubric-strip td { color: #dc2626 !important; font-weight: 900 !important; }
 
-    /* أسلوب الإجابات النموذجية باللون الأحمر */
-    .ans-key {
-      color: #dc2626 !important;
-      font-weight: 800 !important;
-      display: none;
-    }
-
-    body.model-answer-active .ans-key {
-      display: inline !important;
-    }
-
-    body.model-answer-active .blank-dots {
-      display: none !important;
-    }
-
-    body.model-answer-active .rubric-strip td {
-      color: #dc2626 !important;
-      font-weight: 900 !important;
-    }
-
-    /* أشرطة الرصد والدرجات من اليسار تماماً */
+    /* أشرطة الرصد والدرجات */
     .rubric-strip {
       border-collapse: collapse;
       font-size: 10.5px;
@@ -601,12 +595,8 @@
     .rubric-strip th { background-color: #e2e8f0; font-weight: 800; color: #0f172a; }
     .rubric-strip td { font-weight: 800; color: #0e5c4d; min-width: 24px; }
 
-    /* التذييل وثبات الشارات */
-    .footer-divider {
-      height: 1.5px;
-      background-color: #c19a4b;
-      margin: 3px 0;
-    }
+    /* التذييل */
+    .footer-divider { height: 1.5px; background-color: #c19a4b; margin: 3px 0; }
 
     .footer-row {
       display: flex;
@@ -616,12 +606,8 @@
       font-weight: 700;
     }
 
-    .footer-vision { 
-      color: #0e5c4d; 
-      font-family: 'Alexandria', sans-serif;
-      direction: rtl;
-    }
-    
+    .footer-vision { color: #0e5c4d; font-family: 'Alexandria', sans-serif; direction: rtl; }
+
     .page-num {
       color: #0e5c4d;
       font-weight: 800;
@@ -640,7 +626,6 @@
       display: inline-flex !important;
       align-items: center;
       gap: 4px;
-      letter-spacing: 0.5px;
     }
   </style>
 </head>
@@ -649,12 +634,33 @@
   <!-- شريط التحكم العلوي -->
   <div class="top-toolbar no-print">
     <div class="toolbar-left">
-      <!-- زر الإجابة النموذجية -->
       <button class="btn-action btn-key" id="modelAnswerBtn" onclick="toggleModelAnswer()">🔑 Model Answer</button>
 
-      <button class="btn-action btn-danger-clear" onclick="clearAllTemplateData()" title="Clear all and reset">🧹 Clear All Data</button>
+      <!-- شريط تنسيق الخطوط -->
+      <div class="format-toolbar" title="Text Styling">
+        <select class="select-tool" style="padding:2px 4px; font-size:11.5px;" onchange="applyFormat('fontName', this.value)">
+          <option value="Segoe UI">Segoe UI</option>
+          <option value="Comic Neue">Comic / Kids</option>
+          <option value="Times New Roman">Times New Roman</option>
+          <option value="Courier Prime">Typewriter</option>
+          <option value="Alexandria">Alexandria</option>
+        </select>
 
-      <!-- اختيار المنهج متضمناً Pioneer للمتوسط و Top Goal و Top Stars -->
+        <select class="select-tool" style="padding:2px 4px; font-size:11.5px;" onchange="applyFormat('fontSize', this.value)">
+          <option value="2">Small (12px)</option>
+          <option value="3" selected>Normal (14px)</option>
+          <option value="4">Medium (16px)</option>
+          <option value="5">Large (18px)</option>
+          <option value="6">X-Large (24px)</option>
+        </select>
+
+        <button class="btn-fmt" onclick="applyFormat('bold')" title="Bold (Ctrl+B)"><b>B</b></button>
+        <button class="btn-fmt" onclick="applyFormat('italic')" title="Italic (Ctrl+I)"><i>I</i></button>
+        <button class="btn-fmt" onclick="applyFormat('underline')" title="Underline (Ctrl+U)"><u>U</u></button>
+        <input type="color" class="color-picker-input" value="#0f172a" onchange="applyFormat('foreColor', this.value)" title="Change Text Color">
+      </div>
+
+      <!-- اختيار المنهج -->
       <select id="stageSelect" class="select-tool" onchange="changeStage(this.value)">
         <optgroup label="Primary Stage (المرحلة الابتدائية)">
           <option value="top_goal" selected>🌟 Top Goal (Primary)</option>
@@ -674,13 +680,12 @@
         <option value="page1_wrapper">Page 1</option>
       </select>
 
-      <!-- قائمة المهارات مع خيار سؤال الصور الصريح -->
       <select id="questionTypeSelect" class="select-tool">
+        <option value="image_q">🖼️ Image / Picture Question (Side by Side)</option>
         <option value="reading_split">📖 Reading Comprehension (Passage + Parts)</option>
-        <option value="image_q">🖼️ Image / Picture Question</option>
         <option value="handwriting">✍️ E) Handwriting (4-Lines / Copying)</option>
         <option value="vocab">🔤 Vocabulary (Word Box)</option>
-        <option value="grammar">⚙️ Grammar (MCQ)</option>
+        <option value="grammar">⚙️️ Grammar (MCQ)</option>
         <option value="spelling">🔠 Spelling / Missing Letters</option>
         <option value="composition">📝 Composition / Writing</option>
       </select>
@@ -689,13 +694,14 @@
       <button class="btn-action" onclick="addNewExamPage()">📄 ➕ Add Page</button>
       <button class="btn-action" onclick="removeLastExamPage()">📄 ✖ Remove Page</button>
       <button class="btn-action" onclick="document.getElementById('logoUploader').click();">📷 Logo</button>
-      <button class="btn-action" onclick="saveExamData();">💾 Save</button>
+      <button class="btn-action btn-danger-clear" onclick="clearAllTemplateData()" title="Clear and reset">🧹 Clear</button>
       <button class="btn-action btn-print-main" onclick="window.print();">🖨️ Print (A4)</button>
       <input type="file" id="logoUploader" accept="image/*" style="display:none;" onchange="uploadLogo(this)">
     </div>
 
-    <!-- زر واتساب -->
+    <!-- مؤشر الحفظ التلقائي وزر الواتساب -->
     <div class="toolbar-right">
+      <span class="autosave-status" id="autoSaveIndicator">⚡ Auto-saved</span>
       <a href="https://wa.me/966530665625" target="_blank" class="whatsapp-btn" title="Contact on WhatsApp">
         <svg viewBox="0 0 24 24">
           <path d="M12.031 2C6.496 2 2 6.48 2 12.012c0 1.942.556 3.755 1.517 5.29L2 22l4.838-1.503A9.957 9.957 0 0 0 12.031 22c5.534 0 10.03-4.48 10.03-10.012S17.565 2 12.031 2zm5.727 14.195c-.242.684-1.203 1.258-1.742 1.312-.486.05-1.12.083-3.415-.86-2.936-1.206-4.834-4.22-4.98-4.417-.146-.197-1.187-1.579-1.187-3.013 0-1.433.748-2.14 1.014-2.434.267-.294.583-.368.777-.368.194 0 .388.002.558.01.182.008.425-.069.664.507.243.587.825 2.014.898 2.162.073.147.121.32.024.516-.097.196-.146.318-.291.49-.146.172-.307.385-.438.516-.146.147-.298.307-.128.6.17.293.755 1.246 1.621 2.018 1.114.993 2.052 1.302 2.344 1.448.291.147.462.122.632-.073.17-.196.729-.855.923-1.149.194-.294.389-.245.656-.147.267.098 1.699.802 1.99 948.292.147.486.221.559.343.073.122.073.708-.169 1.392z"/>
@@ -724,7 +730,7 @@
                 
                 <div class="header-col center">
                   <div class="logo-container" onclick="document.getElementById('logoUploader').click();" title="Click to upload logo">
-                    <img id="schoolLogo" src="d4b18761-7549-4fc4-b88b-8a2fe8b8084b.png" alt="School Logo" onerror="this.src='https://via.placeholder.com/130x65?text=School+Logo'">
+                    <img id="schoolLogo" src="logo.png" alt="School Logo" onerror="this.src='https://via.placeholder.com/130x65?text=School+Logo'">
                   </div>
                 </div>
 
@@ -791,8 +797,85 @@
 
   <script>
     let qCounter = 0;
-    let imgCounter = 0;
+    let imgContainerCounter = 0;
+    let imgItemCounter = 0;
     let isModelAnswer = false;
+    let autoSaveTimer = null;
+
+    // تطبيق التنسيق
+    function applyFormat(cmd, value = null) {
+      document.execCommand(cmd, false, value);
+      triggerAutoSave();
+    }
+
+    // الحفظ التلقائي
+    function triggerAutoSave() {
+      const indicator = document.getElementById('autoSaveIndicator');
+      if (indicator) indicator.innerText = "⏳ Saving...";
+
+      clearTimeout(autoSaveTimer);
+      autoSaveTimer = setTimeout(() => {
+        saveExamDataLocally();
+        if (indicator) indicator.innerText = "⚡ Auto-saved";
+      }, 500);
+    }
+
+    function saveExamDataLocally() {
+      localStorage.setItem('english_exam_v11_pages', document.getElementById('pagesContainer').innerHTML);
+      localStorage.setItem('english_exam_v11_counter', qCounter);
+    }
+
+    document.addEventListener('input', () => {
+      triggerAutoSave();
+    });
+
+    // تبديل عرض الصور بجوار بعضها (Side by Side) أو تحت بعضها (Stacked)
+    function setLayoutMode(gridId, mode) {
+      const grid = document.getElementById(gridId);
+      if (!grid) return;
+      if (mode === 'stacked') {
+        grid.classList.remove('side-by-side');
+        grid.classList.add('stacked');
+      } else {
+        grid.classList.remove('stacked');
+        grid.classList.add('side-by-side');
+      }
+      triggerAutoSave();
+    }
+
+    // تغيير مقاس الصور في السؤال
+    function resizeImagesInGrid(gridId, val) {
+      const grid = document.getElementById(gridId);
+      if (!grid) return;
+      const imgs = grid.querySelectorAll('img');
+      imgs.forEach(img => {
+        img.style.maxHeight = val + 'px';
+      });
+      triggerAutoSave();
+    }
+
+    // إضافة بطاقة صورة بجانب الصور الحالية
+    function addImageCardToGrid(gridId) {
+      imgItemCounter++;
+      const grid = document.getElementById(gridId);
+      if (!grid) return;
+
+      const fileId = `file_card_${imgItemCounter}`;
+      const imgId = `img_card_${imgItemCounter}`;
+      const count = grid.children.length + 1;
+
+      const card = document.createElement('div');
+      card.className = 'image-card-box';
+      card.innerHTML = `
+        <img id="${imgId}" src="https://via.placeholder.com/130x90?text=Upload+Image" title="Click to upload" onclick="document.getElementById('${fileId}').click();">
+        <input type="file" id="${fileId}" accept="image/*" style="display:none;" onchange="loadQuestionImg(this, '${imgId}')">
+        <div class="image-caption" contenteditable="true">Picture ${count}</div>
+        <button class="btn-delete-q no-print" onclick="this.parentElement.remove(); triggerAutoSave();">✕</button>
+      `;
+
+      grid.appendChild(card);
+      triggerAutoSave();
+    }
 
     // إضافة فقرات فرعية (Wh- / MCQ / T/F)
     function appendSubPart(areaId, type) {
@@ -838,35 +921,48 @@
         `;
         area.appendChild(part);
       }
+      triggerAutoSave();
     }
 
-    // زر إضافة صورة داخل أي سؤال موجود
+    // زر إضافة صورة بجوار بعضها داخل أي سؤال موجود
     function appendImageToQuestion(areaId) {
-      imgCounter++;
+      imgContainerCounter++;
       const area = document.getElementById(areaId);
       if (!area) return;
 
-      const fileInputId = `file_q_img_${imgCounter}`;
-      const previewImgId = `preview_q_img_${imgCounter}`;
+      const gridId = `inline_grid_${imgContainerCounter}`;
+      const wrapper = document.createElement('div');
 
-      const card = document.createElement('div');
-      card.className = 'embedded-img-wrap';
-      card.innerHTML = `
-        <div class="embedded-img-card">
-          <img id="${previewImgId}" src="https://via.placeholder.com/140x100?text=Click+to+Upload" title="Click to upload image" onclick="document.getElementById('${fileInputId}').click();">
-          <input type="file" id="${fileInputId}" accept="image/*" style="display:none;" onchange="loadQuestionImg(this, '${previewImgId}')">
-          <div style="font-size:10.5px; color:#64748b;" class="no-print">Click image to change</div>
-          <button class="btn-delete-q no-print" onclick="this.closest('.embedded-img-wrap').remove()">✕ Remove Image</button>
+      wrapper.innerHTML = `
+        <div class="img-toolbar-bar no-print">
+          <span>🖼️ Images Layout:</span>
+          <button class="btn-mini-tool" onclick="setLayoutMode('${gridId}', 'side-by-side')">↔ Side by Side</button>
+          <button class="btn-mini-tool" onclick="setLayoutMode('${gridId}', 'stacked')">↕ Stacked</button>
+          <button class="btn-mini-tool" onclick="addImageCardToGrid('${gridId}')">➕ Add Image</button>
+          <span style="margin-left:auto; font-size:10.5px;">Size:</span>
+          <input type="range" min="60" max="200" value="95" oninput="resizeImagesInGrid('${gridId}', this.value)" style="width:70px;">
+          <button class="btn-delete-q" onclick="this.closest('.img-toolbar-bar').nextElementSibling.remove(); this.closest('.img-toolbar-bar').remove(); triggerAutoSave();">✕</button>
         </div>
-        <div style="flex:1;" contenteditable="true">
-          Write questions or descriptions related to this picture here...
+        <div id="${gridId}" class="images-grid-container side-by-side">
+          <div class="image-card-box">
+            <img id="img_item_${imgContainerCounter}_1" src="https://via.placeholder.com/130x90?text=Upload+Image" title="Click to upload" onclick="document.getElementById('file_item_${imgContainerCounter}_1').click();">
+            <input type="file" id="file_item_${imgContainerCounter}_1" accept="image/*" style="display:none;" onchange="loadQuestionImg(this, 'img_item_${imgContainerCounter}_1')">
+            <div class="image-caption" contenteditable="true">Picture A</div>
+            <button class="btn-delete-q no-print" onclick="this.parentElement.remove(); triggerAutoSave();">✕</button>
+          </div>
+          <div class="image-card-box">
+            <img id="img_item_${imgContainerCounter}_2" src="https://via.placeholder.com/130x90?text=Upload+Image" title="Click to upload" onclick="document.getElementById('file_item_${imgContainerCounter}_2').click();">
+            <input type="file" id="file_item_${imgContainerCounter}_2" accept="image/*" style="display:none;" onchange="loadQuestionImg(this, 'img_item_${imgContainerCounter}_2')">
+            <div class="image-caption" contenteditable="true">Picture B</div>
+            <button class="btn-delete-q no-print" onclick="this.parentElement.remove(); triggerAutoSave();">✕</button>
+          </div>
         </div>
       `;
 
-      area.prepend(card);
+      area.prepend(wrapper);
+      triggerAutoSave();
     }
 
-    // رفع وتحميل الصورة وتثبيتها كـ Base64
     function loadQuestionImg(input, targetImgId) {
       if (input.files && input.files[0]) {
         const reader = new FileReader();
@@ -874,13 +970,14 @@
           const imgElem = document.getElementById(targetImgId);
           if (imgElem) {
             imgElem.src = e.target.result;
+            triggerAutoSave();
           }
         };
         reader.readAsDataURL(input.files[0]);
       }
     }
 
-    // تفعيل وإلغاء وضع الإجابة النموذجية
+    // تفعيل وضع الإجابة النموذجية
     function toggleModelAnswer() {
       isModelAnswer = !isModelAnswer;
       const btn = document.getElementById('modelAnswerBtn');
@@ -930,8 +1027,8 @@
 
     function clearAllTemplateData() {
       if (confirm('هل أنت متأكد من تفريغ النموذج ومسح جميع البيانات والأسئلة والبدء من جديد؟')) {
-        localStorage.removeItem('english_exam_v8_clean_pages');
-        localStorage.removeItem('english_exam_v8_clean_counter');
+        localStorage.removeItem('english_exam_v11_pages');
+        localStorage.removeItem('english_exam_v11_counter');
         location.reload();
       }
     }
@@ -987,6 +1084,7 @@
         courseCell.innerText = "English (Mega Goal)";
         classCell.innerText = "Grade 12 / ";
       }
+      triggerAutoSave();
     }
 
     function addNewExamPage() {
@@ -1026,6 +1124,7 @@
       pagesContainer.appendChild(pageDiv);
       updateAllPagesFooterAndDropdown();
       pageDiv.scrollIntoView({ behavior: 'smooth' });
+      triggerAutoSave();
     }
 
     function removeLastExamPage() {
@@ -1037,6 +1136,7 @@
       if (confirm(`Are you sure you want to remove Page ${pages.length}?`)) {
         pages[pages.length - 1].remove();
         updateAllPagesFooterAndDropdown();
+        triggerAutoSave();
       }
     }
 
@@ -1092,12 +1192,14 @@
       if (area) area.style.height = val + 'px';
       const lbl = document.getElementById(labelId);
       if (lbl) lbl.innerText = val + 'px';
+      triggerAutoSave();
     }
 
     function deleteQuestion(boxId) {
       const box = document.getElementById(boxId);
       if (box && confirm('Are you sure you want to delete this question?')) {
         box.remove();
+        triggerAutoSave();
       }
     }
 
@@ -1119,11 +1221,13 @@
       newRowHtml += `<th>Total</th><td class="rubric-total-cell" contenteditable="true">/ ${cleanVal}</td></tr>`;
 
       rubricTable.innerHTML = newRowHtml;
+      triggerAutoSave();
     }
 
-    // إضافة سؤال جديد مع تزويده بزر إضافة الصورة وأزرار الأجزاء مباشرة
+    // إضافة سؤال جديد
     function addNewEnglishQuestion() {
       qCounter++;
+      imgContainerCounter++;
       const pageWrapperId = document.getElementById('targetPageSelect').value;
       const qType = document.getElementById('questionTypeSelect').value;
       const targetWrapper = document.getElementById(pageWrapperId);
@@ -1138,8 +1242,7 @@
       const lblId = `px_lbl_${qCounter}`;
       const rubricId = `rubric_table_${qCounter}`;
       const markLblId = `q_mark_lbl_${qCounter}`;
-      const fileId = `file_auto_${qCounter}`;
-      const imgId = `img_auto_${qCounter}`;
+      const gridId = `grid_auto_${imgContainerCounter}`;
 
       const box = document.createElement('div');
       box.className = 'question-box';
@@ -1152,23 +1255,38 @@
       let rubricHtml = '';
 
       if (qType === 'image_q') {
-        sectionTitle = `${qCounter}) Observation / Visual Question`;
-        promptTitle = `Q${qCounter}: Look at the picture and answer the questions:`;
+        sectionTitle = `${qCounter}) Visual Observation & Analysis`;
+        promptTitle = `Q${qCounter}: Look at the pictures, then answer the questions below:`;
         markValue = "4";
 
         innerContentHtml = `
-          <div id="${areaId}" class="q-body-content" style="height: 160px;">
-            <div class="embedded-img-wrap">
-              <div class="embedded-img-card">
-                <img id="${imgId}" src="https://via.placeholder.com/140x100?text=Click+to+Upload" title="Click to upload image" onclick="document.getElementById('${fileId}').click();">
-                <input type="file" id="${fileId}" accept="image/*" style="display:none;" onchange="loadQuestionImg(this, '${imgId}')">
-                <div style="font-size:10.5px; color:#64748b;" class="no-print">Click to change</div>
-              </div>
-              <div style="flex:1;" contenteditable="true">
-                1. What can you see in the picture? ....................................................<br><br>
-                2. Write a sentence about the scene: .....................................................
-              </div>
+          <div class="img-toolbar-bar no-print">
+            <span>🖼️ Pictures Layout:</span>
+            <button class="btn-mini-tool" onclick="setLayoutMode('${gridId}', 'side-by-side')">↔ Side by Side</button>
+            <button class="btn-mini-tool" onclick="setLayoutMode('${gridId}', 'stacked')">↕ Stacked</button>
+            <button class="btn-mini-tool" onclick="addImageCardToGrid('${gridId}')">➕ Add Image</button>
+            <span style="margin-left:auto; font-size:10.5px;">Size:</span>
+            <input type="range" min="60" max="220" value="100" oninput="resizeImagesInGrid('${gridId}', this.value)" style="width:70px;">
+          </div>
+
+          <div id="${gridId}" class="images-grid-container side-by-side">
+            <div class="image-card-box">
+              <img id="img_item_${imgContainerCounter}_1" src="https://via.placeholder.com/130x90?text=Upload+Image+1" title="Click to upload" onclick="document.getElementById('file_item_${imgContainerCounter}_1').click();">
+              <input type="file" id="file_item_${imgContainerCounter}_1" accept="image/*" style="display:none;" onchange="loadQuestionImg(this, 'img_item_${imgContainerCounter}_1')">
+              <div class="image-caption" contenteditable="true">Picture A</div>
+              <button class="btn-delete-q no-print" onclick="this.parentElement.remove(); triggerAutoSave();">✕</button>
             </div>
+            <div class="image-card-box">
+              <img id="img_item_${imgContainerCounter}_2" src="https://via.placeholder.com/130x90?text=Upload+Image+2" title="Click to upload" onclick="document.getElementById('file_item_${imgContainerCounter}_2').click();">
+              <input type="file" id="file_item_${imgContainerCounter}_2" accept="image/*" style="display:none;" onchange="loadQuestionImg(this, 'img_item_${imgContainerCounter}_2')">
+              <div class="image-caption" contenteditable="true">Picture B</div>
+              <button class="btn-delete-q no-print" onclick="this.parentElement.remove(); triggerAutoSave();">✕</button>
+            </div>
+          </div>
+
+          <div id="${areaId}" class="q-body-content" style="height: 120px;" contenteditable="true">
+            1. Describe Picture A: ..........................................................................................................<br><br>
+            2. What is the difference shown in Picture B? ....................................................................
           </div>
         `;
 
@@ -1318,7 +1436,7 @@
           <span>↔ Height:</span>
           <input type="range" min="60" max="420" value="130" oninput="resizeBox('${areaId}', this.value, '${lblId}')">
           <span class="px-label" id="${lblId}">130px</span>
-          <button class="btn-mini-tool" onclick="appendImageToQuestion('${areaId}')">📷 Add Image</button>
+          <button class="btn-mini-tool" onclick="appendImageToQuestion('${areaId}')">📷 Add Images</button>
           <button class="btn-mini-tool" onclick="appendSubPart('${areaId}', 'wh')">➕ Add (Wh-)</button>
           <button class="btn-mini-tool" onclick="appendSubPart('${areaId}', 'mcq')">➕ Add (MCQ)</button>
           <button class="btn-mini-tool" onclick="appendSubPart('${areaId}', 'tf')">➕ Add (T/F)</button>
@@ -1341,6 +1459,7 @@
 
       targetWrapper.appendChild(box);
       box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      triggerAutoSave();
     }
 
     function uploadLogo(input) {
@@ -1348,27 +1467,22 @@
         const reader = new FileReader();
         reader.onload = function(e) {
           document.getElementById('schoolLogo').src = e.target.result;
-          localStorage.setItem('english_exam_v8_logo', e.target.result);
+          localStorage.setItem('english_exam_v11_logo', e.target.result);
+          triggerAutoSave();
         };
         reader.readAsDataURL(input.files[0]);
       }
     }
 
-    function saveExamData() {
-      localStorage.setItem('english_exam_v8_clean_pages', document.getElementById('pagesContainer').innerHTML);
-      localStorage.setItem('english_exam_v8_clean_counter', qCounter);
-      alert('Exam template saved successfully!');
-    }
-
     window.onload = function() {
-      const savedLogo = localStorage.getItem('english_exam_v8_logo');
+      const savedLogo = localStorage.getItem('english_exam_v11_logo');
       if (savedLogo) {
         document.getElementById('schoolLogo').src = savedLogo;
       }
-      const savedPages = localStorage.getItem('english_exam_v8_clean_pages');
+      const savedPages = localStorage.getItem('english_exam_v11_pages');
       if (savedPages) {
         document.getElementById('pagesContainer').innerHTML = savedPages;
-        const savedCounter = localStorage.getItem('english_exam_v8_clean_counter');
+        const savedCounter = localStorage.getItem('english_exam_v11_counter');
         if (savedCounter) qCounter = parseInt(savedCounter);
         updateAllPagesFooterAndDropdown();
       }
